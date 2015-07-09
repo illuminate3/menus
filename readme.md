@@ -9,7 +9,7 @@ Define areas that your links will be displayed
 
 
 ### MenuLinks
-Settings allow you to set key/values to the database or to a .json file
+Add links to the displayed menu areas
 
 
 ## Routes
