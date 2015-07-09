@@ -24,8 +24,12 @@ Route::group(['prefix' => 'admin'], function() {
 	Route::resource('menus', 'MenusController');
 	Route::resource('menulinks', 'MenuLinksController');
 
-
 // Controllers
+
+	Route::get('menulinks/create/{id}', array(
+		'uses'=>'MenuLinksController@create'
+		));
+
 // API DATA
 
 });

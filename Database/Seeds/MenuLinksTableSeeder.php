@@ -54,28 +54,28 @@ class MenuLinksTableSeeder extends Seeder {
 			'title'					=> 'Menus',
 			'url'					=> '/admin/menus',
 			'menulink_id'			=> 1,
-			'locale_id'				=> 1
+			'locale_id'				=> 63
 		],
 		[
 			'status'				=> 1,
 			'title'					=> 'Menús',
 			'url'					=> '/admin/menus',
 			'menulink_id'			=> 1,
-			'locale_id'				=> 2
+			'locale_id'				=> 68
 		],
 		[
 			'status'				=> 1,
 			'title'					=> 'Locales',
 			'url'					=> '/admin/locales',
 			'menulink_id'			=> 2,
-			'locale_id'				=> 1
+			'locale_id'				=> 63
 		],
 		[
 			'status'				=> 1,
 			'title'					=> 'idiomas',
 			'url'					=> '/admin/locales',
 			'menulink_id'			=> 2,
-			'locale_id'				=> 2
+			'locale_id'				=> 68
 		],
 // footer
 		[
@@ -83,14 +83,14 @@ class MenuLinksTableSeeder extends Seeder {
 			'title'					=> 'Welcome',
 			'url'					=> '/welcome',
 			'menulink_id'			=> 3,
-			'locale_id'				=> 1
+			'locale_id'				=> 63
 		],
 		[
 			'status'				=> 1,
 			'title'					=> 'bienvenida',
 			'url'					=> '/welcome',
 			'menulink_id'			=> 3,
-			'locale_id'				=> 2
+			'locale_id'				=> 68
 		]
 
 		);

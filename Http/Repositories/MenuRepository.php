@@ -1,30 +1,31 @@
 <?php
-namespace App\Modules\Menus\Http\Domain\Repositories;
 
-use App\Modules\Menus\Http\Domain\Models\Locale;
-use App\Modules\Menus\Http\Domain\Models\Menu;
+namespace App\Modules\Menus\Http\Repositories;
+
+//use App\Modules\Menus\Http\Models\Locale;
+use App\Modules\Menus\Http\Models\Menu;
 use Illuminate\Support\Collection;
 
 use App;
+use Cache;
 use DB;
 use Session;
-//use Hash, DB, Auth;
-//use DateTime;
-//use File, Auth;
+
 
 class MenuRepository extends BaseRepository {
+
 
 	/**
 	 * The Module instance.
 	 *
-	 * @var App\Modules\ModuleManager\Http\Domain\Models\Module
+	 * @var App\Modules\ModuleManager\Http\Models\Module
 	 */
 	protected $menu;
 
 	/**
 	 * Create a new ModuleRepository instance.
 	 *
-   	 * @param  App\Modules\ModuleManager\Http\Domain\Models\Module $module
+   	 * @param  App\Modules\ModuleManager\Http\Models\Module $module
 	 * @return void
 	 */
 	public function __construct(
@@ -42,10 +43,8 @@ class MenuRepository extends BaseRepository {
 	public function create()
 	{
 		$lang = Session::get('locale');
-		$locales = $this->getLocales();
-//dd($locales);
 
-		return compact('locales', 'lang');
+		return compact('lang');
 	}
 
 	/**
@@ -77,10 +76,9 @@ class MenuRepository extends BaseRepository {
 	{
 		$menu = $this->model->find($id);
 		$lang = Session::get('locale');
-		$locales = $this->getLocales();
 //dd($menu);
 
-		return compact('menu', 'locales', 'lang');
+		return compact('menu', 'lang');
 	}
 
 	/**
@@ -99,7 +97,8 @@ class MenuRepository extends BaseRepository {
 
 		$menu = Menu::create($values);
 
-		$locales = $this->getLocales();
+		$locales = Cache::get('locales');
+		$original_locale = Session::get('locale');
 
 		foreach($locales as $locale => $properties)
 		{
@@ -119,7 +118,8 @@ class MenuRepository extends BaseRepository {
 			$menu->update($values);
 		}
 
-		App::setLocale('en');
+		App::setLocale($original_locale);
+//		App::setLocale('en');
 		return;
 
 	}
@@ -144,52 +144,23 @@ class MenuRepository extends BaseRepository {
 
 		$menu->update($values);
 
-		$locales = $this->getLocales();
+		$locales = Cache::get('locales');
+		$original_locale = Session::get('locale');
 
-		foreach($locales as $locale => $properties)
+		foreach($locales as $locale)
 		{
-			App::setLocale($properties['locale']);
+			App::setLocale($locale->locale);
 
 			$values = [
-				'status'	=> $input['status_'.$properties['id']],
-				'title'		=> $input['title_'.$properties['id']]
+				'status'	=> $input['status_' . $locale->id],
+				'title'		=> $input['title_' . $locale->id]
 			];
 
 			$menu->update($values);
 		}
 
-		App::setLocale('en');
+		App::setLocale($original_locale);
 		return;
-	}
-
-
-	public function getLocales()
-	{
-
-// 		$config = App::make('config');
-// 		$locales = (array) $config->get('languages.supportedLocales', []);
- 		$locales = Locale::all();
-// 		$locales = DB::table('locales')
-// 			->lists('locale');
-
-//dd($locales);
-
-	if ( empty($locales) ) {
-		throw new LocalesNotDefinedException('Please make sure you have run "php artisan config:publish dimsav/laravel-translatable" ' . ' and that the locales configuration is defined.');
-	}
-
-	return $locales;
-	}
-
-
-	public function getMenuID($name)
-	{
-
-		$id = DB::table('menus')
-			->where('name', '=', $name)
-			->pluck('id');
-
-		return $id;
 	}
 
 

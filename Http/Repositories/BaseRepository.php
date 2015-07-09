@@ -1,5 +1,7 @@
 <?php
-namespace App\Modules\Menus\Http\Domain\Repositories;
+
+namespace App\Modules\Menus\Http\Repositories;
+
 
 abstract class BaseRepository {
 
@@ -41,19 +43,6 @@ abstract class BaseRepository {
 	public function getById($id)
 	{
 		return $this->model->findOrFail($id);
-	}
-
-
-	public function getLocales()
-	{
- 		$locales = Locale::all();
-//dd($locales);
-
-	if ( empty($locales) ) {
-		throw new LocalesNotDefinedException('Please make sure you have run "php artisan config:publish dimsav/laravel-translatable" ' . ' and that the locales configuration is defined.');
-	}
-
-	return $locales;
 	}
 
 

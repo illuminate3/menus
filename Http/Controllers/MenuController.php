@@ -41,7 +41,7 @@ class MenuController extends Controller
 	 */
 	public function welcome()
 	{
-		return Theme::View('modules.core.general');
+		return Theme::View('modules.menus.general');
 	}
 
 
@@ -52,7 +52,7 @@ class MenuController extends Controller
 	 */
 	public function index()
 	{
-		return Theme::View('modules.core.landing');
+		return Theme::View('modules.menus.landing');
 	}
 
 

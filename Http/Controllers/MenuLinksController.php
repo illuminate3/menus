@@ -2,16 +2,17 @@
 
 namespace App\Modules\Menus\Http\Controllers;
 
-use App\Modules\Menus\Http\Domain\Models\Menu;
-use App\Modules\Menus\Http\Domain\Repositories\MenuRepository;
-use App\Modules\Menus\Http\Domain\Models\MenuLink;
-use App\Modules\Menus\Http\Domain\Repositories\MenuLinkRepository;
+use App\Modules\Menus\Http\Models\Menu;
+use App\Modules\Menus\Http\Repositories\MenuRepository;
+use App\Modules\Menus\Http\Models\MenuLink;
+use App\Modules\Menus\Http\Repositories\MenuLinkRepository;
 
 use Illuminate\Http\Request;
 use App\Modules\Menus\Http\Requests\DeleteRequest;
 use App\Modules\Menus\Http\Requests\MenuLinkCreateRequest;
 use App\Modules\Menus\Http\Requests\MenuLinkUpdateRequest;
 
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Input;
 
@@ -22,7 +23,7 @@ use Session;
 use Theme;
 
 
-class MenuLinksController extends MenusController {
+class MenuLinksController extends MenuController {
 
 
 	/**
@@ -33,11 +34,11 @@ class MenuLinksController extends MenusController {
 	protected $menulink;
 
 	public function __construct(
-			MenuLinkRepository $menulink,
+			MenuLinkRepository $menulink_repo,
 			MenuRepository $menu
 		)
 	{
-		$this->menulink = $menulink;
+		$this->menulink_repo= $menulink_repo;
 		$this->menu = $menu;
 // middleware
 //		$this->middleware('admin');
@@ -51,12 +52,8 @@ class MenuLinksController extends MenusController {
 	 */
 	public function index()
 	{
-//		$menulinks = $this->menulink->all();
-		$links = MenuLink::with('menu')->get();
-		$lang = Session::get('locale');
-		$locales = $this->menu->getLocales();
-
-		return Theme::View('general::menulinks.index', compact('links', 'locales', 'lang'));
+//		$menulinks = $this->menulink_repo->all();
+//		return Theme::View('menus::menulinks.index', compact('links', 'lang'));
 	}
 
 
@@ -68,15 +65,19 @@ class MenuLinksController extends MenusController {
 	public function create()
 	{
 		$lang = Session::get('locale');
-		$locales = $this->menulink->getLocales();
-		$menus = $this->menu->all()->lists('name', 'id');
-		$menus = array('' => trans('kotoba::general.command.select_a') . '&nbsp;' . Lang::choice('kotoba::cms.menu', 1)) + $menus;
 
-		return Theme::View('general::menulinks.create',
+		$return_id = 1;
+
+		$all_menus = $this->menu->all()->lists('name', 'id');
+		$menu = array('' => trans('kotoba::general.command.select_a') . '&nbsp;' . Lang::choice('kotoba::cms.menu', 1));
+		$menu = new Collection($menu);
+		$menus = $menu->merge($all_menus);
+
+		return Theme::View('menus::menulinks.create',
 			compact(
 				'lang',
-				'locales',
-				'menus'
+				'menus',
+				'return_id'
 			));
 	}
 
@@ -91,7 +92,7 @@ class MenuLinksController extends MenusController {
 	{
 //dd($request);
 //dd($request->menu_id);
-		$this->menulink->store($request->all());
+		$this->menulink_repo->store($request->all());
 
 		Flash::success( trans('kotoba::cms.success.menulink_create') );
 		return redirect('admin/menulinks/' . $request->menu_id);
@@ -105,7 +106,7 @@ class MenuLinksController extends MenusController {
 	 */
 	public function show($id)
 	{
-		return Theme::View('general::menulinks.index',  $this->menulink->show($id));
+		return Theme::View('menus::menulinks.index',  $this->menulink_repo->show($id));
 	}
 
 	/**
@@ -123,15 +124,25 @@ class MenuLinksController extends MenusController {
 		$model = '$menulink';
 //dd($id);
 
-//		return Theme::View('general::menulinks.edit',
-		return View('general::menulinks.edit',
-			$this->menulink->edit($id),
+		$return_id = $id;
+
+		$all_menus = $this->menu->all()->lists('name', 'id');
+		$menu = array('' => trans('kotoba::general.command.select_a') . '&nbsp;' . Lang::choice('kotoba::cms.menu', 1));
+		$menu = new Collection($menu);
+		$menus = $menu->merge($all_menus);
+//dd($menus);
+
+//		return Theme::View('menus::menulinks.edit',
+		return View('menus::menulinks.edit',
+			$this->menulink_repo->edit($id),
 				compact(
 					'modal_title',
 					'modal_body',
 					'modal_route',
 					'modal_id',
-					'model'
+					'model',
+					'menus',
+					'return_id'
 			));
 	}
 
@@ -147,7 +158,7 @@ class MenuLinksController extends MenusController {
 		)
 	{
 //dd($request->menu_id);
-		$this->menulink->update($request->all(), $id);
+		$this->menulink_repo->update($request->all(), $id);
 
 		Flash::success( trans('kotoba::cms.success.menulink_update') );
 		return redirect('admin/menulinks/' . $request->menu_id);
@@ -161,7 +172,7 @@ class MenuLinksController extends MenusController {
 	 */
 	public function destroy($id)
 	{
-		$this->menulink->find($id)->delete();
+		$this->menulink_repo->find($id)->delete();
 
 
 		Flash::success( trans('kotoba::cms.success.menulink_delete') );
@@ -200,7 +211,7 @@ class MenuLinksController extends MenusController {
 	public function save()
 	{
 //dd(Input::get('json'));
-		$this->menulink->changeParentById($this->menulink->parseJsonArray(json_decode(Input::get('json'), true)));
+		$this->menulink_repo->changeParentById($this->menulink_repo->parseJsonArray(json_decode(Input::get('json'), true)));
 		return Response::json(array('result' => 'success'));
 	}
 

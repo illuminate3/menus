@@ -1,5 +1,5 @@
 <?php
-namespace App\Modules\Menus\Http\Domain\Models;
+namespace App\Modules\Menus\Http\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -20,7 +20,7 @@ class Menu extends Model implements TranslatableContract {
 
 
 // Translation Model -------------------------------------------------------
-	protected $translator = 'App\Modules\Menus\Http\Domain\Models\MenuTranslation';
+	protected $translator = 'App\Modules\Menus\Http\Models\MenuTranslation';
 
 
 // Hidden ------------------------------------------------------------------

@@ -34,25 +34,25 @@ class MenusTableSeeder extends Seeder {
 			'status'				=> 1,
 			'title'					=> 'Admin',
 			'menu_id'				=> 1,
-			'locale_id'				=> 1
+			'locale_id'				=> 63
 		],
 		[
 			'status'				=> 1,
 			'title'					=> 'administración',
 			'menu_id'				=> 1,
-			'locale_id'				=> 2
+			'locale_id'				=> 68
 		],
 		[
 			'status'				=> 1,
 			'title'					=> 'Footer',
 			'menu_id'				=> 2,
-			'locale_id'				=> 1
+			'locale_id'				=> 63
 		],
 		[
 			'status'				=> 1,
 			'title'					=> 'pie de página',
 			'menu_id'				=> 2,
-			'locale_id'				=> 2
+			'locale_id'				=> 68
 		]
 		);
 

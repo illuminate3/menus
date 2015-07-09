@@ -1,4 +1,4 @@
-@extends('app')
+@extends($theme_back)
 
 {{-- Web site Title --}}
 @section('title')
@@ -26,7 +26,7 @@
 		<i class="fa fa-chevron-left fa-fw"></i>
 		{{ trans('kotoba::button.back') }}
 	</a>
-	<a href="/admin/menulinks/create" class="btn btn-primary" title="{{ trans('kotoba::button.new') }}">
+	<a href="/admin/menulinks/create/{{ $create_id }}" class="btn btn-primary" title="{{ trans('kotoba::button.new') }}">
 		<i class="fa fa-plus fa-fw"></i>
 		{{ trans('kotoba::button.new') }}
 	</a>
@@ -38,86 +38,77 @@
 </div>
 
 
-@if (count($locales))
+<div class="tab-content">
+@if (count($languages))
 
 <ul class="nav nav-tabs">
-	@foreach( $locales as $locale => $properties)
-		<li class="@if ($locale == $lang)active @endif">
-			<a href="#{{ $properties['id'] }}" data-target="#{{ $properties['id'] }}" data-toggle="tab">{{{ $properties['native'] }}}</a>
+	@foreach( $languages as $language)
+		<li class="@if ($language->locale == $lang)active @endif">
+			<a href="#{{ $language->id }}" data-target="#lang_{{ $language->id }}" data-toggle="tab">{{{ $language->name }}}</a>
 		</li>
 	@endforeach
 </ul>
 
-<div class="tab-content padding-lg margin-bottom-xl">
+@foreach( $languages as $language)
+<div role="tabpanel" class="tab-pane padding fade @if ($language->locale == $lang)in active @endif" id="lang_{{{ $language->id }}}">
 
-@foreach( $locales as $locale => $properties)
-	<div role="tabpanel" class="tab-pane fade @if ($locale == $lang)in active @endif" id="{{{ $properties['id'] }}}">
+	@if (count($links))
 
-@if (count($links))
-
-<div class="row">
-<table id="table" class="table table-striped table-hover">
-	<thead>
-		<tr>
-			<th>{{ trans('kotoba::table.title') }}</th>
-			<th>{{ trans('kotoba::table.url') }}</th>
-			<th>{{ trans('kotoba::table.position') }}</th>
-			<th>{{ trans('kotoba::table.menu') }}</th>
-			<th>{{ trans('kotoba::table.status') }}</th>
-			<th>{{ Lang::choice('kotoba::table.action', 2) }}</th>
-		</tr>
-	</thead>
-	<tbody>
-		@foreach ($links as $link)
+	<div class="row">
+	<table id="table" class="table table-striped table-hover">
+		<thead>
 			<tr>
-				<td>
-					{{ $link->translate($properties['locale'])->title }}
-				</td>
-				<td>
-					{{ $link->translate($properties['locale'])->url }}
-				</td>
-				<td>
-					{{ $link->position }}
-				</td>
-				<td>
-					{{ $link->present()->menuName($link->menu_id) }}
-					{{-- $link->menu_id --}}
-				</td>
-				<td>
-					{{ $link->present()->status( $link->translate($properties['locale'])->status ) }}
-					{{-- $link->translate($properties['locale'])->status --}}
-				</td>
-				<td>
-					<a href="/admin/menulinks/{{ $link->id }}/edit" class="btn btn-success" title="{{ trans('kotoba::button.edit') }}">
-						<i class="fa fa-pencil fa-fw"></i>
-						{{ trans('kotoba::button.edit') }}
-					</a>
-				</td>
+				<th>{{ trans('kotoba::table.title') }}</th>
+				<th>{{ trans('kotoba::table.url') }}</th>
+				<th>{{ trans('kotoba::table.position') }}</th>
+				<th>{{ trans('kotoba::table.menu') }}</th>
+				<th>{{ trans('kotoba::table.status') }}</th>
+				<th>{{ Lang::choice('kotoba::table.action', 2) }}</th>
 			</tr>
-		@endforeach
-	</tbody>
-</table>
-</div>
-
-
-@else
-<div class="alert alert-info">
-	{{ trans('kotoba::general.error.not_found') }}
-</div>
-@endif
-
-
-
+		</thead>
+		<tbody>
+			@foreach ($links as $link)
+				<tr>
+					<td>
+						{{ $link->translate($language->locale)->title }}
+					</td>
+					<td>
+						{{ $link->translate($language->locale)->url }}
+					</td>
+					<td>
+						{{ $link->position }}
+					</td>
+					<td>
+						{{ $link->present()->menuName($link->menu_id) }}
+						{{-- $link->menu_id --}}
+					</td>
+					<td>
+						{{ $link->present()->status( $link->translate($language->locale)->status ) }}
+						{{-- $link->translate($language->locale)->status --}}
+					</td>
+					<td>
+						<a href="/admin/menulinks/{{ $link->id }}/edit" class="btn btn-success" title="{{ trans('kotoba::button.edit') }}">
+							<i class="fa fa-pencil fa-fw"></i>
+							{{ trans('kotoba::button.edit') }}
+						</a>
+					</td>
+				</tr>
+			@endforeach
+		</tbody>
+	</table>
 	</div>
+
+	@else
+	<div class="alert alert-info">
+		{{ trans('kotoba::general.error.not_found') }}
+	</div>
+	@endif
+
+</div><!-- ./ $lang panel -->
 @endforeach
 
-</div>
-
 @endif
+</div><!-- tabcontent -->
 
 
-
-
-
-</div>
 @stop

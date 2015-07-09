@@ -1,9 +1,10 @@
 <?php
-namespace App\Modules\Menus\Http\Domain\Repositories;
 
-use App\Modules\Menus\Http\Domain\Models\Locale;
-use App\Modules\Menus\Http\Domain\Models\Menu;
-use App\Modules\Menus\Http\Domain\Models\MenuLink;
+namespace App\Modules\Menus\Http\Repositories;
+
+//use App\Modules\Menus\Http\Models\Locale;
+use App\Modules\Menus\Http\Models\Menu;
+use App\Modules\Menus\Http\Models\MenuLink;
 
 use Illuminate\Support\Collection;
 
@@ -12,19 +13,21 @@ use DB;
 use Session;
 use Lang;
 
+
 class MenuLinkRepository extends BaseRepository {
+
 
 	/**
 	 * The Module instance.
 	 *
-	 * @var App\Modules\ModuleManager\Http\Domain\Models\Module
+	 * @var App\Modules\ModuleManager\Http\Models\Module
 	 */
 	protected $menulink;
 
 	/**
 	 * Create a new ModuleRepository instance.
 	 *
-   	 * @param  App\Modules\ModuleManager\Http\Domain\Models\Module $module
+   	 * @param  App\Modules\ModuleManager\Http\Models\Module $module
 	 * @return void
 	 */
 	public function __construct(
@@ -33,7 +36,7 @@ class MenuLinkRepository extends BaseRepository {
 		)
 	{
 		$this->menu = $menu;
-		$this->model = $menulink;
+		$this->menulink = $menulink;
 	}
 
 	/**
@@ -44,10 +47,8 @@ class MenuLinkRepository extends BaseRepository {
 	public function create()
 	{
 		$lang = Session::get('locale');
-		$locales = $this->getLocales();
-//dd($locales);
 
-		return compact('locales', 'lang');
+		return compact('lang');
 	}
 
 	/**
@@ -58,19 +59,18 @@ class MenuLinkRepository extends BaseRepository {
 	 */
 	public function show($id)
 	{
-//		$menu = $this->model->find($id);
+//		$menu = $this->menulink->find($id);
 //		$links = MenuLink::all();
-		$links = $this->model->where('menu_id', '=', $id)->get();
+		$links = $this->menulink->where('menu_id', '=', $id)->get();
 //		$links = MenuLink::has('menu')->get();
 		$lang = Session::get('locale');
-		$locales = $this->getLocales();
-//dd($locales);
+
+		$create_id = $id;
 
 		return compact(
+			'create_id',
 			'lang',
-			'links',
-			'locales'
-// 			'menu'
+			'links'
 			);
 	}
 
@@ -82,18 +82,12 @@ class MenuLinkRepository extends BaseRepository {
 	 */
 	public function edit($id)
 	{
-		$link = $this->model->find($id);
+		$link = $this->menulink->find($id);
 		$lang = Session::get('locale');
-		$locales = $this->getLocales();
-//dd($menu);
-		$menus = $this->menu->all()->lists('name', 'id');
-		$menus = array('' => trans('kotoba::general.command.select_a') . '&nbsp;' . Lang::choice('kotoba::cms.menu', 1)) + $menus;
 
 		return compact(
 			'lang',
-			'link',
-			'locales',
-			'menus'
+			'link'
 			);
 	}
 
@@ -105,8 +99,8 @@ class MenuLinkRepository extends BaseRepository {
 	public function store($input)
 	{
 //dd($input);
-// 		$this->model = new MenuLink;
-// 		$this->model->create($input);
+// 		$this->menulink = new MenuLink;
+// 		$this->menulink->create($input);
 
 		$values = [
 			'class'			=> $input['class'],
@@ -116,7 +110,8 @@ class MenuLinkRepository extends BaseRepository {
 
 		$menulink = MenuLink::create($values);
 
-		$locales = $this->getLocales();
+		$locales = Cache::get('locales');
+		$original_locale = Session::get('locale');
 
 		foreach($locales as $locale => $properties)
 		{
@@ -137,7 +132,8 @@ class MenuLinkRepository extends BaseRepository {
 			$menulink->update($values);
 		}
 
-		App::setLocale('en');
+		App::setLocale($original_locale);
+//		App::setLocale('en');
 		return;
 
 	}
@@ -165,7 +161,8 @@ class MenuLinkRepository extends BaseRepository {
 
 		$menulink->update($values);
 
-		$locales = $this->getLocales();
+		$locales = Cache::get('locales');
+		$original_locale = Session::get('locale');
 
 		foreach($locales as $locale => $properties)
 		{
@@ -186,7 +183,8 @@ class MenuLinkRepository extends BaseRepository {
 			$menulink->update($values);
 		}
 
-		App::setLocale('en');
+		App::setLocale($original_locale);
+//		App::setLocale('en');
 		return $id;
 
 	}
@@ -199,22 +197,6 @@ class MenuLinkRepository extends BaseRepository {
 // 		$sites = DB::table('menus')->lists('name', 'id');
 // 		return $sites;
 // 	}
-
-
-	public function getLocales()
-	{
-
-//		$config = App::make('config');
-//		$locales = (array) $config->get('translatable.locales', []);
-//		$locales = (array) $config->get('languages.supportedLocales', []);
- 		$locales = Locale::all();
-
-		if ( empty($locales) ) {
-			throw new LocalesNotDefinedException('Please make sure you have run "php artisan config:publish dimsav/laravel-translatable" ' . ' and that the locales configuration is defined.');
-		}
-
-	return $locales;
-	}
 
 
 	public function changeParentById($data)
@@ -340,7 +322,7 @@ dd($subArray);
 
 	public function getLinks($menu_id, $locale)
 	{
-		$query = $this->model
+		$query = $this->menulink
 //		->with('translations')
 		->join('menulink_translations', 'menulinks.id', '=', 'menulink_translations.menulink_id')
 		->where('menulinks.menu_id', '=', $menu_id)

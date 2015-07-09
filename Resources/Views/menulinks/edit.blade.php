@@ -1,4 +1,4 @@
-@extends('app')
+@extends($theme_back)
 
 {{-- Web site Title --}}
 @section('title')
@@ -6,12 +6,12 @@
 @stop
 
 @section('styles')
-	<link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/chosen_v1.4.1/chosen.min.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/chosen_v1.4.2/chosen.min.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/chosen_bootstrap.css') }}">
 @stop
 
 @section('scripts')
-	<script type="text/javascript" src="{{ asset('assets/vendors/chosen_v1.4.1/chosen.jquery.min.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('assets/vendors/chosen_v1.4.2/chosen.jquery.min.js') }}"></script>
 @stop
 
 @section('inline-scripts')
@@ -27,7 +27,7 @@
 <div class="row">
 <h1>
 	<p class="pull-right">
-	<a href="/admin/menus" class="btn btn-default" title="{{ trans('kotoba::button.back') }}">
+	<a href="/admin/menulinks/{{ $return_id }}" class="btn btn-default" title="{{ trans('kotoba::button.back') }}">
 		<i class="fa fa-chevron-left fa-fw"></i>
 		{{ trans('kotoba::button.back') }}
 	</a>
@@ -73,7 +73,7 @@
 				Form::select(
 					'menu_id',
 					$menus,
-					$link->menu_id,
+					$link->menu_id - 1,
 					array(
 						'class' => 'form-control chosen-select'
 					)
@@ -85,36 +85,34 @@
 </div>
 <div class="col-sm-6">
 
-	@if (count($locales))
+	<div class="tab-content">
+	@if (count($languages))
 
 	<ul class="nav nav-tabs">
-		@foreach( $locales as $locale => $properties)
-			<li class="@if ($locale == $lang)active @endif">
-				<a href="#{{ $properties['id'] }}" data-target="#{{ $properties['id'] }}" data-toggle="tab">{{{ $properties['native'] }}}</a>
+		@foreach( $languages as $language)
+			<li class="@if ($language->locale == $lang)active @endif">
+				<a href="#{{ $language->id }}" data-target="#lang_{{ $language->id }}" data-toggle="tab">{{{ $language->name }}}</a>
 			</li>
 		@endforeach
 	</ul>
 
-	<div class="tab-content padding-lg margin-bottom-xl">
-
-	@foreach( $locales as $locale => $properties)
-		<div role="tabpanel" class="tab-pane fade @if ($locale == $lang)in active @endif" id="{{{ $properties['id'] }}}">
+	@foreach( $languages as $language)
+	<div role="tabpanel" class="tab-pane padding fade @if ($language->locale == $lang)in active @endif" id="lang_{{{ $language->id }}}">
 
 			<div class="form-group">
 				<label class="col-sm-1 control-label">{{ trans('kotoba::general.title') }}</label>
 				<div class="col-sm-11">
-					<input type="text" class="form-control" name="{{ 'title_'. $properties['id'] }}" id="{{ 'title_'. $properties['id'] }}" value="{{ $link->translate($properties['locale'])->title }}">
+					<input type="text" class="form-control" name="{{ 'title_'. $language->id }}" id="{{ 'title_'. $language->id }}" value="{{ $link->translate($language->locale)->title }}">
 				</div>
 			</div>
 
-<br>
 <br>
 <br>
 
 			<div class="form-group">
 				<label class="col-sm-1 control-label">{{ trans('kotoba::general.url') }}</label>
 				<div class="col-sm-11">
-					<input type="text" class="form-control" name="{{ 'url_'. $properties['id'] }}" id="{{ 'url_'. $properties['id'] }}" value="{{ $link->translate($properties['locale'])->url }}">
+					<input type="text" class="form-control" name="{{ 'url_'. $language->id }}" id="{{ 'url_'. $language->id }}" value="{{ $link->translate($language->locale)->url }}">
 				</div>
 			</div>
 
@@ -122,26 +120,22 @@
 <br>
 
 			<div class="form-group">
-				<label class="col-sm-1 control-label"></label>
-				<div class="col-sm-11">
-					<div class="checkbox">
-							{{ trans('kotoba::general.enabled') }}
-							&nbsp;
-							<input type="radio" name="{{ 'status_'. $properties['id'] }}"  name="{{ 'status_'. $properties['id'] }}" value="1" @if($link->translate($properties['locale'])->status===1) checked @endif>
-							&nbsp;
-							{{ trans('kotoba::general.disabled') }}
-							&nbsp;
-							<input type="radio" name="{{ 'status_'. $properties['id'] }}"  name="{{ 'status_'. $properties['id'] }}" value="0" @if($link->translate($properties['locale'])->status===0) checked @endif>
-					</div>
+				<div class="checkbox">
+						{{ trans('kotoba::general.enabled') }}
+						&nbsp;
+						<input type="radio" name="{{ 'status_'. $language->id }}"  name="{{ 'status_'. $language->id }}" value="1" @if($link->translate($language->locale)->status===1) checked @endif>
+						&nbsp;
+						{{ trans('kotoba::general.disabled') }}
+						&nbsp;
+						<input type="radio" name="{{ 'status_'. $language->id }}"  name="{{ 'status_'. $language->id }}" value="0" @if($link->translate($language->locale)->status===0) checked @endif>
 				</div>
 			</div>
 
-		</div>
+	</div><!-- ./ $lang panel -->
 	@endforeach
 
-	</div>
-
 	@endif
+	</div><!-- tabcontent -->
 
 </div>
 
@@ -149,16 +143,17 @@
 <hr>
 
 
-<div class="form-group">
+<div class="row">
 <div class="col-sm-12">
 	<input class="btn btn-success btn-block" type="submit" value="{{ trans('kotoba::button.save') }}">
 </div>
 </div>
 
+<br>
 
 <div class="row">
 <div class="col-sm-4">
-	<a href="/admin/menulinks" class="btn btn-default btn-block" title="{{ trans('kotoba::button.cancel') }}">
+	<a href="/admin/menulinks/{{ $return_id }}" class="btn btn-default btn-block" title="{{ trans('kotoba::button.cancel') }}">
 		<i class="fa fa-times fa-fw"></i>
 		{{ trans('kotoba::button.cancel') }}
 	</a>
@@ -186,7 +181,7 @@
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	@include('_partials.modal')
+	@include($activeTheme . '::' . '_partials.modal')
 </div>
 
 

@@ -2,8 +2,8 @@
 
 namespace App\Modules\Menus\Http\Controllers;
 
-use App\Modules\Menus\Http\Domain\Models\Menu;
-use App\Modules\Menus\Http\Domain\Repositories\MenuRepository;
+use App\Modules\Menus\Http\Models\Menu;
+use App\Modules\Menus\Http\Repositories\MenuRepository;
 
 use Illuminate\Http\Request;
 use App\Modules\Menus\Http\Requests\DeleteRequest;
@@ -18,7 +18,7 @@ use Flash;
 use Theme;
 
 
-class MenusController extends MenusController {
+class MenusController extends MenuController {
 
 
 	/**
@@ -29,10 +29,10 @@ class MenusController extends MenusController {
 	protected $menu;
 
 	public function __construct(
-			MenuRepository $menu
+			MenuRepository $menu_repo
 		)
 	{
-		$this->menu = $menu;
+		$this->menu_repo = $menu_repo;
 // middleware
 //		$this->middleware('admin');
 	}
@@ -45,10 +45,10 @@ class MenusController extends MenusController {
 	 */
 	public function index()
 	{
-		$menus = $this->menu->all();
+		$menus = $this->menu_repo->all();
 //dd($locales);
 
-		return Theme::View('general::menus.index', compact('menus', 'locales'));
+		return Theme::View('menus::menus.index', compact('menus'));
 	}
 
 
@@ -59,7 +59,7 @@ class MenusController extends MenusController {
 	 */
 	public function create()
 	{
-		return Theme::View('general::menus.create',  $this->menu->create());
+		return Theme::View('menus::menus.create',  $this->menu_repo->create());
 	}
 
 	/**
@@ -73,7 +73,7 @@ class MenusController extends MenusController {
 	{
 //dd($request);
 
-		$this->menu->store($request->all());
+		$this->menu_repo->store($request->all());
 
 		Flash::success( trans('kotoba::cms.success.menu_create') );
 		return redirect('admin/menus');
@@ -87,7 +87,7 @@ class MenusController extends MenusController {
 	 */
 	public function show($id)
 	{
-// 		$menu = $this->menu->findOrFail($id);
+// 		$menu = $this->menu_repo->findOrFail($id);
 //
 // 		return View::make('HR::menus.show', compact('menu'));
 	}
@@ -108,9 +108,9 @@ class MenusController extends MenusController {
 //		$model = 'menu';
 //dd($model);
 
-//		return Theme::View('general::menus.edit',
-		return View('general::menus.edit',
-			$this->menu->edit($id),
+//		return Theme::View('menus::menus.edit',
+		return View('menus::menus.edit',
+			$this->menu_repo->edit($id),
 				compact(
 					'modal_title',
 					'modal_body',
@@ -133,7 +133,7 @@ class MenusController extends MenusController {
 	{
 //dd($request);
 
-		$this->menu->update($request->all(), $id);
+		$this->menu_repo->update($request->all(), $id);
 
 		Flash::success( trans('kotoba::cms.success.menu_update') );
 		return redirect('admin/menus');

@@ -15,7 +15,7 @@ Settings allow you to set key/values to the database or to a .json file
 ## Routes
 
 * /admin/menus
-* /admin/settings
+* /admin/menulinks/{id}
 
 
 ## Packages
