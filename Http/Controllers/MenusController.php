@@ -46,7 +46,6 @@ class MenusController extends MenuController {
 	public function index()
 	{
 		$menus = $this->menu_repo->all();
-//dd($locales);
 
 		return Theme::View('menus::menus.index', compact('menus'));
 	}
