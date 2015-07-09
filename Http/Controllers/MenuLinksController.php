@@ -1,15 +1,16 @@
 <?php
-namespace App\Modules\General\Http\Controllers;
 
-use App\Modules\General\Http\Domain\Models\Menu;
-use App\Modules\General\Http\Domain\Repositories\MenuRepository;
-use App\Modules\General\Http\Domain\Models\MenuLink;
-use App\Modules\General\Http\Domain\Repositories\MenuLinkRepository;
+namespace App\Modules\Menus\Http\Controllers;
+
+use App\Modules\Menus\Http\Domain\Models\Menu;
+use App\Modules\Menus\Http\Domain\Repositories\MenuRepository;
+use App\Modules\Menus\Http\Domain\Models\MenuLink;
+use App\Modules\Menus\Http\Domain\Repositories\MenuLinkRepository;
 
 use Illuminate\Http\Request;
-use App\Modules\General\Http\Requests\DeleteRequest;
-use App\Modules\General\Http\Requests\MenuLinkCreateRequest;
-use App\Modules\General\Http\Requests\MenuLinkUpdateRequest;
+use App\Modules\Menus\Http\Requests\DeleteRequest;
+use App\Modules\Menus\Http\Requests\MenuLinkCreateRequest;
+use App\Modules\Menus\Http\Requests\MenuLinkUpdateRequest;
 
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Input;
@@ -21,7 +22,7 @@ use Session;
 use Theme;
 
 
-class MenuLinksController extends GeneralController {
+class MenuLinksController extends MenusController {
 
 
 	/**

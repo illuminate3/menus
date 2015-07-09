@@ -1,10 +1,12 @@
 <?php
-namespace App\Modules\General\Http\Requests;
+
+namespace App\Modules\Menus\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Config;
+
 
 class MenuUpdateRequest extends FormRequest {
+
 
 	/**
 	 * Determine if the user is authorized to make this request.

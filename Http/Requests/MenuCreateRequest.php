@@ -1,10 +1,12 @@
 <?php
-namespace App\Modules\General\Http\Requests;
+
+namespace App\Modules\Menus\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Config;
+
 
 class MenuCreateRequest extends FormRequest {
+
 
 	/**
 	 * Determine if the user is authorized to make this request.
@@ -24,8 +26,8 @@ class MenuCreateRequest extends FormRequest {
 	public function rules()
 	{
 		return [
-// 			'name'						=> 'required',
-// 			'description'				=> 'required'
+			'name'						=> 'required'
+///			'description'				=> 'required'
 		];
 	}
 

@@ -1,11 +1,15 @@
 <?php
+
 namespace App\Modules\Menus\Database\Seeds;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 
+
 class MenusDatabaseSeeder extends Seeder
 {
+
+
 	/**
 	 * Run the database seeds.
 	 *
@@ -15,7 +19,9 @@ class MenusDatabaseSeeder extends Seeder
 	{
 		Model::unguard();
 
-		// $this->call('App\Modules\Menus\Database\Seeds\FoobarTableSeeder');
+		$this->call('App\Modules\Menus\Database\Seeds\MenusTableSeeder');
+		$this->call('App\Modules\Menus\Database\Seeds\MenuLinksTableSeeder');
 	}
+
 
 }

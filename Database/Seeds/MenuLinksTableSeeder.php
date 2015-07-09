@@ -1,5 +1,6 @@
 <?php
-namespace App\Modules\General\Database\Seeds;
+
+namespace App\Modules\Menus\Database\Seeds;
 
 use Illuminate\Database\Seeder;
 
@@ -9,11 +10,9 @@ use DB;
 use Eloquent;
 use Model;
 
-// use Caffeinated\Shinobi\Models\Role as Role;
-// use App\Modules\Kagi\Http\Domain\Models\User as User;
-//use App\Modules\Kagi\Http\Domain\Models\Permission as Permission;
 
 class MenuLinksTableSeeder extends Seeder {
+
 
 /*
 	public function __construct(

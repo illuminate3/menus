@@ -1,11 +1,11 @@
 <?php
-namespace App\Modules\General\Providers;
+namespace App\Modules\Menus\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
-use App\Modules\General\Http\Domain\Models\Menu as LMenu;
+use App\Modules\Menus\Http\Domain\Models\Menu as LMenu;
 // use App\Models\Repositories\MenuRepository;
-use App\Modules\General\Http\Domain\Models\MenuLink;
+use App\Modules\Menus\Http\Domain\Models\MenuLink;
 // use App\Models\Repositories\MenuLinkRepository;
 
 

@@ -2,6 +2,6 @@
 	"name": "Menus",
 	"slug": "menus",
 	"version": "1.0",
-	"description": "This is the description for the Menus module.",
+	"description": "Rakko Menu Manager.",
 	"enabled": true
 }

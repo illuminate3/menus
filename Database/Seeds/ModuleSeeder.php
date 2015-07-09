@@ -1,22 +1,24 @@
 <?php
-namespace App\Modules\General\Database\Seeds;
+
+namespace App\Modules\Menus\Database\Seeds;
 
 use Illuminate\Database\Seeder;
 
 use DB;
-use Schema;
+
 
 class ModuleSeeder extends Seeder {
+
 
 	public function run()
 	{
 
 // Module Information
 // 		$module = array(
-// 			'name'					=> 'General',
+// 			'name'					=> 'Menus',
 // 			'slug'					=> 'general',
 // 			'version'				=> '1.0',
-// 			'description'			=> 'General functionality for Rakko',
+// 			'description'			=> 'Menus functionality for Rakko',
 // 			'enabled'				=> 1,
 // 			'order'					=> 3
 // 		);
@@ -32,9 +34,9 @@ class ModuleSeeder extends Seeder {
 // Permission Information
 		$permissions = array(
 			[
-				'name'				=> 'Manage General',
+				'name'				=> 'Manage Menus',
 				'slug'				=> 'manage_general',
-				'description'		=> 'Give permission to user to manage General Items'
+				'description'		=> 'Give permission to user to manage Menus Items'
 			],
 		 );
 

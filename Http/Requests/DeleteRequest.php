@@ -1,9 +1,12 @@
 <?php
-namespace App\Modules\General\Http\Requests;
+
+namespace App\Modules\Menus\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+
 class DeleteRequest extends FormRequest {
+
 
 	/**
 	 * Determine if the user is authorized to make this request.
@@ -23,8 +26,9 @@ class DeleteRequest extends FormRequest {
 	public function rules()
 	{
 		return [
-			'id' => 'required|integer',
+			'id'					=> 'required|integer',
 		];
 	}
+
 
 }

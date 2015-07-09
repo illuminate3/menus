@@ -1,5 +1,5 @@
 <?php
-namespace App\Modules\General\Http\Domain\Models;
+namespace App\Modules\Menus\Http\Domain\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -14,22 +14,23 @@ class Menu extends Model implements TranslatableContract {
 
 	protected $table = 'menus';
 
-// Presenter -------------------------------------------------------
-	protected $presenter = 'App\Modules\General\Http\Presenters\General';
+
+// Presenter ---------------------------------------------------------------
+	protected $presenter = 'App\Modules\Menus\Http\Presenters\Menus';
 
 
 // Translation Model -------------------------------------------------------
-	protected $translator = 'App\Modules\General\Http\Domain\Models\MenuTranslation';
+	protected $translator = 'App\Modules\Menus\Http\Domain\Models\MenuTranslation';
 
 
-// DEFINE Hidden -------------------------------------------------------
+// Hidden ------------------------------------------------------------------
 	protected $hidden = [
 		'created_at',
 		'updated_at'
 		];
 
 
-// DEFINE Fillable -------------------------------------------------------
+// Fillable ----------------------------------------------------------------
 	protected $fillable = [
 		'class',
 		'name',
@@ -39,7 +40,7 @@ class Menu extends Model implements TranslatableContract {
 		];
 
 
-// Translated Columns -------------------------------------------------------
+// Translated Columns ------------------------------------------------------
 	protected $translatedAttributes = [
 		'status',
 		'title'
@@ -50,6 +51,9 @@ class Menu extends Model implements TranslatableContract {
 // 		'title'
 // 		];
 
+
+// Relationships -----------------------------------------------------------
+// Functions ---------------------------------------------------------------
 	public function getStatusAttribute()
 	{
 		return $this->status;

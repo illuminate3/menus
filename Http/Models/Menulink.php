@@ -1,11 +1,12 @@
 <?php
-namespace App\Modules\General\Http\Domain\Models;
+namespace App\Modules\Menus\Http\Domain\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
 use Laracasts\Presenter\PresentableTrait;
 use Vinkla\Translator\Translatable;
 use Vinkla\Translator\Contracts\Translatable as TranslatableContract;
+
 
 class Menulink extends Model implements TranslatableContract {
 
@@ -14,22 +15,24 @@ class Menulink extends Model implements TranslatableContract {
 
 	protected $table = 'menulinks';
 
-// Presenter -------------------------------------------------------
-	protected $presenter = 'App\Modules\General\Http\Presenters\General';
+
+
+// Presenter ---------------------------------------------------------------
+	protected $presenter = 'App\Modules\Menus\Http\Presenters\Menus';
 
 
 // Translation Model -------------------------------------------------------
-	protected $translator = 'App\Modules\General\Http\Domain\Models\MenulinkTranslation';
+	protected $translator = 'App\Modules\Menus\Http\Domain\Models\MenulinkTranslation';
 
 
-// DEFINE Hidden -------------------------------------------------------
+// Hidden ------------------------------------------------------------------
 	protected $hidden = [
 		'created_at',
 		'updated_at'
 		];
 
 
-// DEFINE Fillable -------------------------------------------------------
+// Fillable ----------------------------------------------------------------
 	protected $fillable = [
 		'menu_id',
 		'page_id',
@@ -48,7 +51,7 @@ class Menulink extends Model implements TranslatableContract {
 		];
 
 
-// Translated Columns -------------------------------------------------------
+// Translated Columns ------------------------------------------------------
 	protected $translatedAttributes = [
 		'title',
 		'status',
@@ -61,6 +64,9 @@ class Menulink extends Model implements TranslatableContract {
 // 		'url'
 // 		];
 
+
+// Relationships -----------------------------------------------------------
+// Functions ---------------------------------------------------------------
 	public function getStatusAttribute()
 	{
 		return $this->status;

@@ -1,9 +1,9 @@
 <?php
-namespace App\Modules\General\Http\Domain\Repositories;
+namespace App\Modules\Menus\Http\Domain\Repositories;
 
-use App\Modules\General\Http\Domain\Models\Locale;
-use App\Modules\General\Http\Domain\Models\Menu;
-use App\Modules\General\Http\Domain\Models\MenuLink;
+use App\Modules\Menus\Http\Domain\Models\Locale;
+use App\Modules\Menus\Http\Domain\Models\Menu;
+use App\Modules\Menus\Http\Domain\Models\MenuLink;
 
 use Illuminate\Support\Collection;
 

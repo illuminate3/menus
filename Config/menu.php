@@ -1,5 +1,10 @@
 <?php
 
+// php artisan vendor:publish --provider="App\Modules\Menus\Providers\MenusServiceProvider" --tag="config"
+// php artisan vendor:publish --provider="App\Modules\Menus\Providers\MenusServiceProvider" --tag="config"
+// php artisan vendor:publish --provider="App\Modules\Menus\Providers\MenusServiceProvider" --tag="views"
+
+
 	return array(
 
   // Global options ------------------------------------------------ /

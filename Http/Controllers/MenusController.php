@@ -1,13 +1,14 @@
 <?php
-namespace App\Modules\General\Http\Controllers;
 
-use App\Modules\General\Http\Domain\Models\Menu;
-use App\Modules\General\Http\Domain\Repositories\MenuRepository;
+namespace App\Modules\Menus\Http\Controllers;
+
+use App\Modules\Menus\Http\Domain\Models\Menu;
+use App\Modules\Menus\Http\Domain\Repositories\MenuRepository;
 
 use Illuminate\Http\Request;
-use App\Modules\General\Http\Requests\DeleteRequest;
-use App\Modules\General\Http\Requests\MenuCreateRequest;
-use App\Modules\General\Http\Requests\MenuUpdateRequest;
+use App\Modules\Menus\Http\Requests\DeleteRequest;
+use App\Modules\Menus\Http\Requests\MenuCreateRequest;
+use App\Modules\Menus\Http\Requests\MenuUpdateRequest;
 
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Input;
@@ -17,7 +18,7 @@ use Flash;
 use Theme;
 
 
-class MenusController extends GeneralController {
+class MenusController extends MenusController {
 
 
 	/**
