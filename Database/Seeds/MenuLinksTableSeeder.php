@@ -95,31 +95,17 @@ class MenuLinksTableSeeder extends Seeder {
 
 		);
 
-// Create Menus
+// Create Link
 		DB::table('menulinks')->delete();
 			$statement = "ALTER TABLE menulinks AUTO_INCREMENT = 1;";
 			DB::unprepared($statement);
 		DB::table('menulinks')->insert( $link_names );
 
-// Create Roles
+// Create Link Translation
 		DB::table('menulink_translations')->delete();
 			$statement = "ALTER TABLE menulink_translations AUTO_INCREMENT = 1;";
 			DB::unprepared($statement);
 		DB::table('menulink_translations')->insert( $ink_name_trans );
-
-/*
-// Attach permission to role
-		$role = $this->role->find(1);
-		$role->syncPermissions([1]);
-		$role = $this->role->find(2);
-		$role->syncPermissions([2]);
-
-// Attach role to user
-		$user = User::find(1);
-		$user->roles()->attach(1);
-		$user = User::find(2);
-		$user->roles()->attach(2);
-*/
 
 	} // run
 
