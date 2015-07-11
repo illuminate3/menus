@@ -21,6 +21,7 @@ class MenusDatabaseSeeder extends Seeder
 
 		$this->call('App\Modules\Menus\Database\Seeds\MenusTableSeeder');
 		$this->call('App\Modules\Menus\Database\Seeds\MenuLinksTableSeeder');
+		$this->call('App\Modules\Menus\Database\Seeds\ModuleSeeder');
 	}
 
 
