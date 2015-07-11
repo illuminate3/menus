@@ -63,11 +63,12 @@ class MenusServiceProvider extends ServiceProvider
 		$this->publishes([
 			__DIR__ . '/../Publish/Plugins' => base_path('app/Plugins/'),
 		], 'plugins');
+*/
 
 		$this->publishes([
-			__DIR__ . '/../Publish/views/plugins/' => base_path('resources/views/plugins/'),
+			__DIR__ . '/../Resources/Views/' => public_path('themes/') . Theme::getActive() . '/views/modules/menus/',
 		], 'views');
-*/
+
 
 		AliasLoader::getInstance()->alias(
 			'Menu',

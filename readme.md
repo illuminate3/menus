@@ -1,5 +1,15 @@
-# Menus : Laravel 5.1.x Beta Development
+# Menus : Laravel 5.1.x
 
+
+## Status / Version
+
+Beta Development
+
+
+## Description
+
+This module provides a way to display menus or navigational methods in your application.
+the display methods are based on vespakoen's menu package.
 
 ## Functionality
 
@@ -20,49 +30,18 @@ Add links to the displayed menu areas
 
 ## Packages
 
+Intended to be used with:
+https://github.com/illuminate3/rakkoII
 
-* https://github.com/illuminate3/kotoba
-```
-"illuminate3/kotoba": "dev-master",
-Illuminate3\Kotoba\KotobaServiceProvider::class,
-```
-
-
-* https://github.com/vinkla/translator
-```
-'Menu\MenuServiceProvider',
-'Menu' => 'Menu\Menu',
-```
-
-```
-vendor:publish --provider="Vinkla\Translator\TranslatorServiceProvider"
-```
-
+The Following are packages that are specific to this module:
 
 * https://github.com/vespakoen/menu
-```
-composer require anlutro/l4-settings
-anlutro\LaravelSettings\ServiceProvider::class,
-'Setting' => 'anlutro\LaravelSettings\Facade'
-```
-
-```
-vendor:publish --provider="anlutro\LaravelSettings\ServiceProvider"
-```
-
-* https://github.com/laracasts/Presenter
-```
-"laracasts/presenter": "dev-master"
-```
 
 
+## Screen Shots
 ## Thanks
 
+Originally, I intended to use:
+* https://github.com/TypiCMS/Menulinks
 
-*
-
-
-## Partial Code or Ideas
-
-
-* https://github.com/mcamara/laravel-localization/blob/master/src/config/config.php
+But my curiosity led me to develop my own module.
