@@ -9,6 +9,15 @@
 
 // Resources
 // Controllers
+
+
+Route::group(['prefix' => 'menus'], function() {
+	Route::get('welcome', [
+		'uses'=>'MenuController@welcome'
+	]);
+});
+
+
 // API DATA
 
 
@@ -34,9 +43,3 @@ Route::group(['prefix' => 'admin'], function() {
 
 });
 // --------------------------------------------------------------------------
-
-Route::group(['prefix' => 'menu'], function() {
-	Route::get('/', function() {
-		dd('This is the Menus module index page.');
-	});
-});

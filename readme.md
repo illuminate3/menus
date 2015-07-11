@@ -28,6 +28,33 @@ Add links to the displayed menu areas
 * /admin/menulinks/{id}
 
 
+## Install
+
+### migration commands
+
+```
+php artisan module:migrate Menus
+php artisan module:seed Menus
+```
+
+
+### publish commands
+
+General Publish "ALL" method
+```
+php artisan vendor:publish --provider="App\Modules\Menus\Providers\MenusServiceProvider"
+```
+
+Specific Publish tags
+```
+php artisan vendor:publish --provider="App\Modules\Menus\Providers\MenusServiceProvider" --tag="configs"
+php artisan vendor:publish --provider="App\Modules\Menus\Providers\MenusServiceProvider" --tag="images"
+php artisan vendor:publish --provider="App\Modules\Menus\Providers\MenusServiceProvider" --tag="views"
+```
+
+
+
+
 ## Packages
 
 Intended to be used with:

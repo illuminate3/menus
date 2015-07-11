@@ -24,6 +24,7 @@ class MenuLinkRepository extends BaseRepository {
 	 */
 	protected $menulink;
 
+
 	/**
 	 * Create a new ModuleRepository instance.
 	 *
@@ -39,6 +40,7 @@ class MenuLinkRepository extends BaseRepository {
 		$this->menulink = $menulink;
 	}
 
+
 	/**
 	 * Get role collection.
 	 *
@@ -50,6 +52,7 @@ class MenuLinkRepository extends BaseRepository {
 
 		return compact('lang');
 	}
+
 
 	/**
 	 * Get user collection.
@@ -74,6 +77,7 @@ class MenuLinkRepository extends BaseRepository {
 			);
 	}
 
+
 	/**
 	 * Get user collection.
 	 *
@@ -90,6 +94,7 @@ class MenuLinkRepository extends BaseRepository {
 			'link'
 			);
 	}
+
 
 	/**
 	 * Get all models.
@@ -137,6 +142,7 @@ class MenuLinkRepository extends BaseRepository {
 		return;
 
 	}
+
 
 	/**
 	 * Update a role.
@@ -338,8 +344,6 @@ dd($subArray);
 
 		return $models;
 	}
-
-
 
 
 }

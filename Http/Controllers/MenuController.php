@@ -41,18 +41,7 @@ class MenuController extends Controller
 	 */
 	public function welcome()
 	{
-		return Theme::View('modules.menus.general');
-	}
-
-
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return Response
-	 */
-	public function index()
-	{
-		return Theme::View('modules.menus.landing');
+		return Theme::View('modules.menus.welcome.menus');
 	}
 
 

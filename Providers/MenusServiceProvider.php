@@ -31,6 +31,7 @@ class MenusServiceProvider extends ServiceProvider
 		$this->registerProviders();
 	}
 
+
 	/**
 	 * Register the Menus module resource namespaces.
 	 *
@@ -38,7 +39,6 @@ class MenusServiceProvider extends ServiceProvider
 	 */
 	protected function registerNamespaces()
 	{
-//		Lang::addNamespace('menus', realpath(__DIR__.'/../Resources/Lang'));
 		View::addNamespace('menus', realpath(__DIR__.'/../Resources/Views'));
 	}
 
@@ -50,21 +50,22 @@ class MenusServiceProvider extends ServiceProvider
 	 */
 	public function boot()
 	{
-		$this->publishes([
-			__DIR__.'/../Config/menu.php' => config_path('menu.php'),
-// 			__DIR__ . '/../Publish/assets/vendors' => base_path('public/assets/vendors/'),
-// 			__DIR__ . '/../Publish/Plugins' => base_path('app/Plugins/'),
-// 			__DIR__ . '/../Publish/views/plugins/' => base_path('resources/views/plugins/'),
-		]);
-/*
-		$this->publishes([
-			__DIR__ . '/../Publish/assets/vendors' => base_path('public/assets/vendors/'),
-		], 'js');
 
 		$this->publishes([
-			__DIR__ . '/../Publish/Plugins' => base_path('app/Plugins/'),
-		], 'plugins');
-*/
+			__DIR__.'/../Config/menu.php' => config_path('menu.php'),
+			__DIR__ . '/../Resources/Assets/Images' => base_path('public/assets/images/'),
+			__DIR__ . '/../Resources/Views/' => public_path('themes/') . Theme::getActive() . '/views/modules/menus/',
+		]);
+
+
+		$this->publishes([
+			__DIR__.'/../Config/menu.php' => config_path('menu.php'),
+		], 'configs');
+
+		$this->publishes([
+			__DIR__ . '/../Resources/Assets/Images' => base_path('public/assets/images/'),
+		], 'images');
+
 
 		$this->publishes([
 			__DIR__ . '/../Resources/Views/' => public_path('themes/') . Theme::getActive() . '/views/modules/menus/',
@@ -75,7 +76,6 @@ class MenusServiceProvider extends ServiceProvider
 			'Menu',
 			'Menu\Menu'
 		);
-
 
 	}
 

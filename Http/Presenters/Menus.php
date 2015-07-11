@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Modules\Menus\Http\Presenters;
 
 use Laracasts\Presenter\Presenter;
@@ -6,6 +7,7 @@ use Laracasts\Presenter\Presenter;
 use Config;
 use DB;
 use Session;
+
 
 class Menus extends Presenter {
 
@@ -20,6 +22,7 @@ class Menus extends Presenter {
 		return ucwords($this->entity->name);
 	}
 
+
 	public function checked()
 	{
 //dd("loaded");
@@ -32,6 +35,7 @@ class Menus extends Presenter {
 		return $return;
 	}
 
+
 	public function status($status)
 	{
 //dd($status);
@@ -43,6 +47,7 @@ class Menus extends Presenter {
 
 		return $return;
 	}
+
 
 	public function menuName($id)
 	{
@@ -59,5 +64,6 @@ class Menus extends Presenter {
 		return $name;
 
 	}
+
 
 }

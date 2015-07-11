@@ -13,6 +13,7 @@ abstract class BaseRepository {
 	 */
 	protected $model;
 
+
 	/**
 	 * Get all models.
 	 *
@@ -22,6 +23,7 @@ abstract class BaseRepository {
 	{
 		return $this->model->all();
 	}
+
 
 	/**
 	 * Destroy a model.
@@ -33,6 +35,7 @@ abstract class BaseRepository {
 	{
 		$this->getById($id)->delete();
 	}
+
 
 	/**
 	 * Get Model by id.

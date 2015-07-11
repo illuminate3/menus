@@ -22,6 +22,7 @@ class MenuRepository extends BaseRepository {
 	 */
 	protected $menu;
 
+
 	/**
 	 * Create a new ModuleRepository instance.
 	 *
@@ -35,6 +36,7 @@ class MenuRepository extends BaseRepository {
 		$this->model = $menu;
 	}
 
+
 	/**
 	 * Get role collection.
 	 *
@@ -46,6 +48,7 @@ class MenuRepository extends BaseRepository {
 
 		return compact('lang');
 	}
+
 
 	/**
 	 * Get user collection.
@@ -66,6 +69,7 @@ class MenuRepository extends BaseRepository {
 		return compact('menu', 'links');
 	}
 
+
 	/**
 	 * Get user collection.
 	 *
@@ -80,6 +84,7 @@ class MenuRepository extends BaseRepository {
 
 		return compact('menu', 'lang');
 	}
+
 
 	/**
 	 * Get all models.
@@ -121,6 +126,7 @@ class MenuRepository extends BaseRepository {
 		App::setLocale($original_locale);
 //		App::setLocale('en');
 		return;
+
 
 	}
 
