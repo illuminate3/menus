@@ -8,6 +8,7 @@ use Illuminate\Support\ServiceProvider;
 use App;
 use Config;
 use Lang;
+use Theme;
 use View;
 
 
