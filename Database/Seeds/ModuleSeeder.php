@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Origami\Database\Seeds;
+namespace App\Modules\Menus\Database\Seeds;
 
 use Illuminate\Database\Seeder;
 Use DB;
