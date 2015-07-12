@@ -61,6 +61,7 @@ class MenusController extends MenuController {
 		return Theme::View('menus::menus.create',  $this->menu_repo->create());
 	}
 
+
 	/**
 	 * Store a newly created resource in storage.
 	 *
@@ -78,6 +79,7 @@ class MenusController extends MenuController {
 		return redirect('admin/menus');
 	}
 
+
 	/**
 	 * Display the specified resource.
 	 *
@@ -86,10 +88,9 @@ class MenusController extends MenuController {
 	 */
 	public function show($id)
 	{
-// 		$menu = $this->menu_repo->findOrFail($id);
-//
-// 		return View::make('HR::menus.show', compact('menu'));
+		//
 	}
+
 
 	/**
 	 * Show the form for editing the specified resource.
@@ -99,25 +100,10 @@ class MenusController extends MenuController {
 	 */
 	public function edit($id)
 	{
-		$modal_title = trans('kotoba::general.command.delete');
-		$modal_body = trans('kotoba::general.ask.delete');
-		$modal_route = 'admin.menus.destroy';
-		$modal_id = $id;
-		$model = '$menu';
-//		$model = 'menu';
-//dd($model);
-
-//		return Theme::View('menus::menus.edit',
-		return View('menus::menus.edit',
-			$this->menu_repo->edit($id),
-				compact(
-					'modal_title',
-					'modal_body',
-					'modal_route',
-					'modal_id',
-					'model'
-			));
+		return Theme::View('menus::menus.edit',
+			$this->menu_repo->edit($id));
 	}
+
 
 	/**
 	 * Update the specified resource in storage.
@@ -138,6 +124,7 @@ class MenusController extends MenuController {
 		return redirect('admin/menus');
 	}
 
+
 	/**
 	 * Remove the specified resource from storage.
 	 *
@@ -151,35 +138,6 @@ class MenusController extends MenuController {
 
 		Flash::success( trans('kotoba::cms.success.menu_delete') );
 		return redirect('admin/menus');
-	}
-
-	/**
-	* Datatables data
-	*
-	* @return Datatables JSON
-	*/
-	public function data()
-	{
-//		$query = Menu::select(array('menus.id','menus.name','menus.description'))
-//			->orderBy('menus.name', 'ASC');
-//		$query = Menu::select('id', 'name' 'description', 'updated_at');
-//			->orderBy('name', 'ASC');
-		$query = Menu::select('id', 'name', 'description', 'updated_at');
-//dd($query);
-
-		return Datatables::of($query)
-//			->remove_column('id')
-
-			->addColumn(
-				'actions',
-				'
-					<a href="{{ URL::to(\'admin/menus/\' . $id . \'/edit\' ) }}" class="btn btn-success btn-sm" >
-						<span class="glyphicon glyphicon-pencil"></span>  {{ trans("kotoba::button.edit") }}
-					</a>
-				'
-				)
-
-			->make(true);
 	}
 
 

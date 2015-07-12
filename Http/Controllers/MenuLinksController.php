@@ -52,8 +52,7 @@ class MenuLinksController extends MenuController {
 	 */
 	public function index()
 	{
-//		$menulinks = $this->menulink_repo->all();
-//		return Theme::View('menus::menulinks.index', compact('links', 'lang'));
+		//
 	}
 
 
@@ -81,6 +80,7 @@ class MenuLinksController extends MenuController {
 			));
 	}
 
+
 	/**
 	 * Store a newly created resource in storage.
 	 *
@@ -91,12 +91,12 @@ class MenuLinksController extends MenuController {
 		)
 	{
 //dd($request);
-//dd($request->menu_id);
 		$this->menulink_repo->store($request->all());
 
 		Flash::success( trans('kotoba::cms.success.menulink_create') );
 		return redirect('admin/menulinks/' . $request->menu_id);
 	}
+
 
 	/**
 	 * Display the specified resource.
@@ -109,6 +109,7 @@ class MenuLinksController extends MenuController {
 		return Theme::View('menus::menulinks.index',  $this->menulink_repo->show($id));
 	}
 
+
 	/**
 	 * Show the form for editing the specified resource.
 	 *
@@ -117,14 +118,17 @@ class MenuLinksController extends MenuController {
 	 */
 	public function edit($id)
 	{
+		$link = MenuLink::find($id);
+		$lang = Session::get('locale');
+
 		$modal_title = trans('kotoba::general.command.delete');
 		$modal_body = trans('kotoba::general.ask.delete');
 		$modal_route = 'admin.menulinks.destroy';
 		$modal_id = $id;
 		$model = '$menulink';
-//dd($id);
 
 		$return_id = $id;
+//dd($return_id);
 
 		$all_menus = $this->menu->all()->lists('name', 'id');
 		$menu = array('' => trans('kotoba::general.command.select_a') . '&nbsp;' . Lang::choice('kotoba::cms.menu', 1));
@@ -132,19 +136,20 @@ class MenuLinksController extends MenuController {
 		$menus = $menu->merge($all_menus);
 //dd($menus);
 
-//		return Theme::View('menus::menulinks.edit',
-		return View('menus::menulinks.edit',
-			$this->menulink_repo->edit($id),
-				compact(
-					'modal_title',
-					'modal_body',
-					'modal_route',
-					'modal_id',
-					'model',
-					'menus',
-					'return_id'
-			));
+		return Theme::View('menus::menulinks.edit',
+			compact(
+				'lang',
+				'link',
+				'menus',
+				'return_id',
+				'modal_title',
+				'modal_body',
+				'modal_route',
+				'modal_id',
+				'model'
+		));
 	}
+
 
 	/**
 	 * Update the specified resource in storage.
@@ -164,6 +169,7 @@ class MenuLinksController extends MenuController {
 		return redirect('admin/menulinks/' . $request->menu_id);
 	}
 
+
 	/**
 	 * Remove the specified resource from storage.
 	 *
@@ -178,43 +184,6 @@ class MenuLinksController extends MenuController {
 		Flash::success( trans('kotoba::cms.success.menulink_delete') );
 		return redirect('admin/menus');
 	}
-
-	/**
-	* Datatables data
-	*
-	* @return Datatables JSON
-	*/
-	public function data()
-	{
-//		$query = Menu::select(array('menulinks.id','menus.name','menus.description'))
-//			->orderBy('menus.name', 'ASC');
-//		$query = Menu::select('id', 'name' 'description', 'updated_at');
-//			->orderBy('name', 'ASC');
-		$query = MenuLink::select('id', 'name', 'description', 'updated_at');
-//dd($query);
-
-		return Datatables::of($query)
-//			->remove_column('id')
-
-			->addColumn(
-				'actions',
-				'
-					<a href="{{ URL::to(\'admin/menulinks/\' . $id . \'/edit\' ) }}" class="btn btn-success btn-sm" >
-						<span class="glyphicon glyphicon-pencil"></span>  {{ trans("kotoba::button.edit") }}
-					</a>
-				'
-				)
-
-			->make(true);
-	}
-
-	public function save()
-	{
-//dd(Input::get('json'));
-		$this->menulink_repo->changeParentById($this->menulink_repo->parseJsonArray(json_decode(Input::get('json'), true)));
-		return Response::json(array('result' => 'success'));
-	}
-
 
 
 }

@@ -60,11 +60,6 @@ class MenuRepository extends BaseRepository {
 	{
 		$menu = $this->model->find($id);
 		$links = Menu::find($id)->menulinks;
-//$menu = $this->menu->show($id);
-
-//$menu = $this->model->where('id', $id)->first();
-//		$menu = new Collection($menu);
-//dd($menu);
 
 		return compact('menu', 'links');
 	}
@@ -82,7 +77,21 @@ class MenuRepository extends BaseRepository {
 		$lang = Session::get('locale');
 //dd($menu);
 
-		return compact('menu', 'lang');
+		$modal_title = trans('kotoba::general.command.delete');
+		$modal_body = trans('kotoba::general.ask.delete');
+		$modal_route = 'admin.menus.destroy';
+		$modal_id = $id;
+		$model = '$menu';
+
+		return compact(
+			'lang',
+			'menu',
+			'modal_title',
+			'modal_body',
+			'modal_route',
+			'modal_id',
+			'model'
+			);
 	}
 
 

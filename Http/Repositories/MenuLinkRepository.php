@@ -303,20 +303,6 @@ dd($subArray);
 //dd($result);
 
 			return $result ?  $result : null;
-
-
-// 		$result .= "<li class='dd-item nested-list-item' data-order='{$item->order}' data-id='{$item->id}'>
-// 		<div class='dd-handle nested-list-handle'>
-// 		<span class='glyphicon glyphicon-move'></span>
-// 		</div>
-// 		<div class='nested-list-content'>{$item->label}
-// 		<div class='pull-right'>
-// 		<a href='".url("admin/menu/edit/{$item->id}")."'>Edit</a> |
-// 		<a href='#' class='delete_toggle' rel='{$item->id}'>Delete</a>
-// 		</div>
-// 		</div>".$this->buildMenu($menu, $item->id) . "</li>";
-// 		}
-// 		return $result ?  "\n<ol class=\"dd-list\">\n$result</ol>\n" : null;
 	}
 
 	// Getter for the HTML menu builder
