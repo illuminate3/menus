@@ -73,7 +73,7 @@
 				Form::select(
 					'menu_id',
 					$menus,
-					$link->menu_id - 1,
+					$link->menu_id,
 					array(
 						'class' => 'form-control chosen-select'
 					)

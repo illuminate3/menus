@@ -41,6 +41,7 @@ class MenuLinksController extends MenuController {
 		$this->menulink_repo= $menulink_repo;
 		$this->menu = $menu;
 // middleware
+		$this->middleware('auth');
 //		$this->middleware('admin');
 	}
 
@@ -130,10 +131,10 @@ class MenuLinksController extends MenuController {
 		$return_id = $id;
 //dd($return_id);
 
-		$all_menus = $this->menu->all()->lists('name', 'id');
-		$menu = array('' => trans('kotoba::general.command.select_a') . '&nbsp;' . Lang::choice('kotoba::cms.menu', 1));
-		$menu = new Collection($menu);
-		$menus = $menu->merge($all_menus);
+		$menus = $this->menu->all()->lists('name', 'id');
+// 		$menu = array('' => trans('kotoba::general.command.select_a') . '&nbsp;' . Lang::choice('kotoba::cms.menu', 1));
+// 		$menu = new Collection($menu);
+// 		$menus = $menu->merge($all_menus);
 //dd($menus);
 
 		return Theme::View('menus::menulinks.edit',

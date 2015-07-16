@@ -55,6 +55,7 @@ class MenusServiceProvider extends ServiceProvider
 			__DIR__.'/../Config/menu.php' => config_path('menu.php'),
 			__DIR__ . '/../Resources/Assets/Images' => base_path('public/assets/images/'),
 			__DIR__ . '/../Resources/Views/' => public_path('themes/') . Theme::getActive() . '/views/modules/menus/',
+			__DIR__ . '/../Resources/Assets/Views/' => public_path('themes/') . Theme::getActive() . '/views/',
 		]);
 
 
@@ -69,6 +70,7 @@ class MenusServiceProvider extends ServiceProvider
 
 		$this->publishes([
 			__DIR__ . '/../Resources/Views/' => public_path('themes/') . Theme::getActive() . '/views/modules/menus/',
+			__DIR__ . '/../Resources/Assets/Views/' => public_path('themes/') . Theme::getActive() . '/views/',
 		], 'views');
 
 
@@ -90,6 +92,7 @@ class MenusServiceProvider extends ServiceProvider
 		$app = $this->app;
 
 		$app->register('App\Modules\Menus\Providers\RouteServiceProvider');
+		$app->register('App\Modules\Menus\Providers\WidgetServiceProvider');
 		$app->register('Menu\MenuServiceProvider');
 	}
 
