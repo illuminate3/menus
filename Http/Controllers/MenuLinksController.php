@@ -41,8 +41,10 @@ class MenuLinksController extends MenuController {
 		$this->menulink_repo= $menulink_repo;
 		$this->menu = $menu;
 // middleware
-		$this->middleware('auth');
-//		$this->middleware('admin');
+		parent::__construct();
+// middleware
+// 		$this->middleware('auth');
+// 		$this->middleware('admin');
 	}
 
 
