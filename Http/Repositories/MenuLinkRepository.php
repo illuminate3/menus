@@ -9,6 +9,7 @@ use App\Modules\Menus\Http\Models\MenuLink;
 use Illuminate\Support\Collection;
 
 use App;
+use Cache;
 use DB;
 use Session;
 use Lang;
@@ -118,20 +119,21 @@ class MenuLinkRepository extends BaseRepository {
 		$locales = Cache::get('locales');
 		$original_locale = Session::get('locale');
 
+
 		foreach($locales as $locale => $properties)
 		{
-			App::setLocale($properties['locale']);
+			App::setLocale($properties->locale);
 
-			if ( !isset($input['status_'.$properties['id']]) ) {
+			if ( !isset($input['status_'.$properties->id]) ) {
 				$status = 0;
 			} else {
-				$status = $input['status_'.$properties['id']];
+				$status = $input['status_'.$properties->id];
 			}
 
 			$values = [
 				'status'	=> $status,
-				'title'		=> $input['title_'.$properties['id']],
-				'url'		=> $input['url_'.$properties['id']]
+				'title'		=> $input['title_'.$properties->id],
+				'url'		=> $input['url_'.$properties->id]
 			];
 
 			$menulink->update($values);
@@ -172,18 +174,18 @@ class MenuLinkRepository extends BaseRepository {
 
 		foreach($locales as $locale => $properties)
 		{
-			App::setLocale($properties['locale']);
+			App::setLocale($properties->locale);
 
-			if ( !isset($input['status_'.$properties['id']]) ) {
+			if ( !isset($input['status_'.$properties->id]) ) {
 				$status = 0;
 			} else {
-				$status = $input['status_'.$properties['id']];
+				$status = $input['status_'.$properties->id];
 			}
 
 			$values = [
 				'status'	=> $status,
-				'title'		=> $input['title_'.$properties['id']],
-				'url'		=> $input['url_'.$properties['id']]
+				'title'		=> $input['title_'.$properties->id],
+				'url'		=> $input['url_'.$properties->id]
 			];
 
 			$menulink->update($values);
