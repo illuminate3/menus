@@ -119,9 +119,9 @@ class MenuLinkRepository extends BaseRepository {
 		$locales = Cache::get('locales');
 		$original_locale = Session::get('locale');
 
-
 		foreach($locales as $locale => $properties)
 		{
+
 			App::setLocale($properties->locale);
 
 			if ( !isset($input['status_'.$properties->id]) ) {
@@ -137,12 +137,11 @@ class MenuLinkRepository extends BaseRepository {
 			];
 
 			$menulink->update($values);
+
 		}
 
-		App::setLocale($original_locale);
-//		App::setLocale('en');
+		App::setLocale($original_locale, Config::get('app.fallback_locale'));
 		return;
-
 	}
 
 
@@ -174,6 +173,7 @@ class MenuLinkRepository extends BaseRepository {
 
 		foreach($locales as $locale => $properties)
 		{
+
 			App::setLocale($properties->locale);
 
 			if ( !isset($input['status_'.$properties->id]) ) {
@@ -189,12 +189,11 @@ class MenuLinkRepository extends BaseRepository {
 			];
 
 			$menulink->update($values);
+
 		}
 
-		App::setLocale($original_locale);
-//		App::setLocale('en');
-		return $id;
-
+		App::setLocale($original_locale, Config::get('app.fallback_locale'));
+		return;
 	}
 
 

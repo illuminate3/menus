@@ -118,15 +118,15 @@ class MenuRepository extends BaseRepository {
 		{
 			App::setLocale($properties['locale']);
 
-			if ( !isset($input['status_'.$properties['id']]) ) {
+			if ( !isset($input['status_' . $properties->id]) ) {
 				$status = 0;
 			} else {
-				$status = $input['status_'.$properties['id']];
+				$status = $input['status_' . $properties->id];
 			}
 
 			$values = [
 				'status'	=> $status,
-				'title'		=> $input['title_'.$properties['id']]
+				'title'		=> $input['title_' . $properties->id]
 			];
 
 			$menu->update($values);
