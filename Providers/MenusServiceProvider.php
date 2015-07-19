@@ -91,9 +91,9 @@ class MenusServiceProvider extends ServiceProvider
 	{
 		$app = $this->app;
 
-// 		$app->register('App\Modulexs\Menus\Providers\RouteServiceProvider');
-// 		$app->register('App\Modules\Menus\Providers\WidgetServiceProvider');
-// 		$app->register('Menu\MenuServiceProvider');
+		$app->register('App\Modules\Menus\Providers\RouteServiceProvider');
+		$app->register('App\Modules\Menus\Providers\WidgetServiceProvider');
+		$app->register('Menu\MenuServiceProvider');
 	}
 
 
