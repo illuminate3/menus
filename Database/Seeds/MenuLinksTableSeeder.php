@@ -62,14 +62,14 @@ class MenuLinksTableSeeder extends Seeder {
 		[
 			'status'				=> 1,
 			'title'					=> 'Welcome',
-			'url'					=> '/welcome',
+			'url'					=> '/core/welcome',
 			'menulink_id'			=> 3,
 			'locale_id'				=> 63
 		],
 		[
 			'status'				=> 1,
 			'title'					=> 'bienvenida',
-			'url'					=> '/welcome',
+			'url'					=> '/core/welcome',
 			'menulink_id'			=> 3,
 			'locale_id'				=> 68
 		]

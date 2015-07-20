@@ -19,9 +19,9 @@ class MenusDatabaseSeeder extends Seeder
 	{
 		Model::unguard();
 
-//		$this->call('App\Modules\Menus\Database\Seeds\MenusTableSeeder');
+		$this->call('App\Modules\Menus\Database\Seeds\MenusTableSeeder');
+		$this->call('App\Modules\Menus\Database\Seeds\MenuLinksTableSeeder');
 		$this->call('App\Modules\Menus\Database\Seeds\ModuleSeeder');
-//		$this->call('App\Modules\Menus\Database\Seeds\MenuLinksTableSeeder');
 	}
 
 
