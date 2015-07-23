@@ -48,14 +48,14 @@ class MenuLinksTableSeeder extends Seeder {
 			'status'				=> 1,
 			'title'					=> 'Menus',
 			'url'					=> '/admin/menus',
-			'menulink_id'			=> 1,
+			'menu_link_id'			=> 1,
 			'locale_id'				=> 63
 		],
 		[
 			'status'				=> 1,
 			'title'					=> 'Menús',
 			'url'					=> '/admin/menus',
-			'menulink_id'			=> 1,
+			'menu_link_id'			=> 1,
 			'locale_id'				=> 68
 		],
 // footer
@@ -63,14 +63,14 @@ class MenuLinksTableSeeder extends Seeder {
 			'status'				=> 1,
 			'title'					=> 'Welcome',
 			'url'					=> '/core/welcome',
-			'menulink_id'			=> 3,
+			'menu_link_id'			=> 3,
 			'locale_id'				=> 63
 		],
 		[
 			'status'				=> 1,
 			'title'					=> 'bienvenida',
 			'url'					=> '/core/welcome',
-			'menulink_id'			=> 3,
+			'menu_link_id'			=> 3,
 			'locale_id'				=> 68
 		]
 
