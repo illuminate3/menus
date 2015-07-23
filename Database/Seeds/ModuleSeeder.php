@@ -50,7 +50,7 @@ class ModuleSeeder extends Seeder {
 			'status'				=> 1,
 			'title'					=> 'Menus',
 			'url'					=> '/admin/menus',
-			'menulink_id'			=> $last_insert_id,
+			'menu_link_id'			=> $last_insert_id,
 			'locale_id'				=> $locale_id // English ID
 		]);
 
