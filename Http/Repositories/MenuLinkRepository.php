@@ -117,9 +117,9 @@ class MenulinkRepository extends BaseRepository {
 
 		$menulink = Menulink::create($values);
 
-		$locales = Cache::get('locales');
-dd($locales);
+		$locales = Cache::get('languages');
 		$original_locale = Session::get('locale');
+//dd($original_locale);
 
 		foreach($locales as $locale => $properties)
 		{
@@ -170,7 +170,7 @@ dd($locales);
 
 		$menulink->update($values);
 
-		$locales = Cache::get('locales');
+		$locales = Cache::get('languages');
 		$original_locale = Session::get('locale');
 
 		foreach($locales as $locale => $properties)
