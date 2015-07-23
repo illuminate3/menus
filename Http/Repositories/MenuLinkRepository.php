@@ -118,6 +118,7 @@ class MenulinkRepository extends BaseRepository {
 		$menulink = Menulink::create($values);
 
 		$locales = Cache::get('locales');
+dd($locales);
 		$original_locale = Session::get('locale');
 
 		foreach($locales as $locale => $properties)
