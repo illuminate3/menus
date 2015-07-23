@@ -118,7 +118,6 @@ class MenulinkRepository extends BaseRepository {
 		$menulink = Menulink::create($values);
 
 		$locales = Cache::get('locales');
-dd($locales);
 		$original_locale = Session::get('locale');
 
 		foreach($locales as $locale => $properties)
@@ -319,7 +318,7 @@ dd($subArray);
 	{
 		$query = $this->menulink
 //		->with('translations')
-		->join('menulink_translations', 'menulinks.id', '=', 'menulink_translations.menu_link_id')
+		->join('menulink_translations', 'menulinks.id', '=', 'menulink_translations.menulink_id')
 		->where('menulinks.menu_id', '=', $menu_id)
 		->where('menulink_translations.status', '=', 1, 'AND')
 		->where('menulink_translations.locale', '=', $locale)
