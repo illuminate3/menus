@@ -45,24 +45,6 @@
 
 <div class="col-sm-6">
 
-	<div class="form-group">
-	<div class="input-group">
-		<span class="input-group-addon"><i class="fa fa-tag fa-fw"></i></span>
-			<input type="text" id="name" name="name" value="{{ $menu->name }}" placeholder="{{ trans('kotoba::account.name') }}" class="form-control" autofocus="autofocus">
-	</div>
-	</div>
-
-
-	<div class="form-group">
-	<div class="input-group">
-		<span class="input-group-addon"><i class="fa fa-css3 fa-fw"></i></span>
-			<input type="text" id="class" name="class" value="{{ $menu->class }}" placeholder="{{ trans('kotoba::general.class') }}" class="form-control">
-	</div>
-	</div>
-
-</div>
-<div class="col-sm-6">
-
 	<div class="tab-content">
 	@if (count($languages))
 
@@ -99,6 +81,24 @@
 
 	@endif
 	</div><!-- tabcontent -->
+
+</div>
+<div class="col-sm-6">
+
+	<div class="form-group">
+	<div class="input-group">
+		<span class="input-group-addon"><i class="fa fa-tag fa-fw"></i></span>
+			<input type="text" id="name" name="name" value="{{ $menu->name }}" placeholder="{{ trans('kotoba::account.name') }}" class="form-control" autofocus="autofocus">
+	</div>
+	</div>
+
+
+	<div class="form-group">
+	<div class="input-group">
+		<span class="input-group-addon"><i class="fa fa-css3 fa-fw"></i></span>
+			<input type="text" id="class" name="class" value="{{ $menu->class }}" placeholder="{{ trans('kotoba::general.class') }}" class="form-control">
+	</div>
+	</div>
 
 </div>
 

@@ -50,41 +50,6 @@
 
 <div class="col-sm-6">
 
-	<div class="form-group">
-	<div class="input-group">
-		<span class="input-group-addon"><i class="fa fa-sort-numeric-asc fa-fw"></i></span>
-			<input type="text" id="position" name="position" placeholder="{{ trans('kotoba::cms.position') }}" class="form-control" autofocus="autofocus">
-	</div>
-	</div>
-
-
-	<div class="form-group">
-	<div class="input-group">
-		<span class="input-group-addon"><i class="fa fa-css3 fa-fw"></i></span>
-			<input type="text" id="class" name="class" placeholder="{{ trans('kotoba::general.class') }}" class="form-control">
-	</div>
-	</div>
-
-
-<div class="form-group padding-bottom-xl">
-	<label for="inputJobTitle1" class="col-sm-2 control-label">{{ Lang::choice('kotoba::cms.menu', 2) }}:</label>
-	<div class="col-sm-10">
-		{!!
-			Form::select(
-				'menu_id',
-				$menus,
-				$return_id - 1,
-				array(
-					'class' => 'form-control chosen-select'
-				)
-			)
-		!!}
-	</div>
-</div>
-
-</div>
-<div class="col-sm-6">
-
 	<div class="tab-content">
 	@if (count($languages))
 
@@ -130,6 +95,41 @@
 
 	@endif
 	</div><!-- tabcontent -->
+
+</div>
+<div class="col-sm-6">
+
+	<div class="form-group">
+	<div class="input-group">
+		<span class="input-group-addon"><i class="fa fa-sort-numeric-asc fa-fw"></i></span>
+			<input type="text" id="position" name="position" placeholder="{{ trans('kotoba::cms.position') }}" class="form-control" autofocus="autofocus">
+	</div>
+	</div>
+
+
+	<div class="form-group">
+	<div class="input-group">
+		<span class="input-group-addon"><i class="fa fa-css3 fa-fw"></i></span>
+			<input type="text" id="class" name="class" placeholder="{{ trans('kotoba::general.class') }}" class="form-control">
+	</div>
+	</div>
+
+
+<div class="form-group padding-bottom-xl">
+	<label for="inputJobTitle1" class="col-sm-2 control-label">{{ Lang::choice('kotoba::cms.menu', 2) }}:</label>
+	<div class="col-sm-10">
+		{!!
+			Form::select(
+				'menu_id',
+				$menus,
+				$return_id - 1,
+				array(
+					'class' => 'form-control chosen-select'
+				)
+			)
+		!!}
+	</div>
+</div>
 
 </div>
 
