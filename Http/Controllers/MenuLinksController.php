@@ -4,8 +4,8 @@ namespace App\Modules\Menus\Http\Controllers;
 
 use App\Modules\Menus\Http\Models\Menu;
 use App\Modules\Menus\Http\Repositories\MenuRepository;
-use App\Modules\Menus\Http\Models\MenuLink;
-use App\Modules\Menus\Http\Repositories\MenuLinkRepository;
+use App\Modules\Menus\Http\Models\Menulink;
+use App\Modules\Menus\Http\Repositories\MenulinkRepository;
 
 use Illuminate\Http\Request;
 use App\Modules\Menus\Http\Requests\DeleteRequest;
@@ -34,7 +34,7 @@ class MenuLinksController extends MenuController {
 	protected $menulink;
 
 	public function __construct(
-			MenuLinkRepository $menulink_repo,
+			MenulinkRepository $menulink_repo,
 			MenuRepository $menu
 		)
 	{
@@ -121,7 +121,7 @@ class MenuLinksController extends MenuController {
 	 */
 	public function edit($id)
 	{
-		$link = MenuLink::find($id);
+		$link = Menulink::find($id);
 		$lang = Session::get('locale');
 
 		$modal_title = trans('kotoba::general.command.delete');

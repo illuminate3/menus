@@ -8,7 +8,7 @@ use Vinkla\Translator\Translatable;
 use Vinkla\Translator\Contracts\Translatable as TranslatableContract;
 
 
-class Menulink extends Model implements TranslatableContract {
+class MenuLink extends Model implements TranslatableContract {
 
 	use Translatable;
 	use PresentableTrait;

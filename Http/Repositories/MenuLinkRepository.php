@@ -4,7 +4,7 @@ namespace App\Modules\Menus\Http\Repositories;
 
 //use App\Modules\Menus\Http\Models\Locale;
 use App\Modules\Menus\Http\Models\Menu;
-use App\Modules\Menus\Http\Models\MenuLink;
+use App\Modules\Menus\Http\Models\Menulink;
 
 use Illuminate\Support\Collection;
 
@@ -15,7 +15,7 @@ use Session;
 use Lang;
 
 
-class MenuLinkRepository extends BaseRepository {
+class MenulinkRepository extends BaseRepository {
 
 
 	/**
@@ -34,7 +34,7 @@ class MenuLinkRepository extends BaseRepository {
 	 */
 	public function __construct(
 		Menu $menu,
-		MenuLink $menulink
+		Menulink $menulink
 		)
 	{
 		$this->menu = $menu;
@@ -64,9 +64,9 @@ class MenuLinkRepository extends BaseRepository {
 	public function show($id)
 	{
 //		$menu = $this->menulink->find($id);
-//		$links = MenuLink::all();
+//		$links = Menulink::all();
 		$links = $this->menulink->where('menu_id', '=', $id)->get();
-//		$links = MenuLink::has('menu')->get();
+//		$links = Menulink::has('menu')->get();
 		$lang = Session::get('locale');
 
 		$create_id = $id;
@@ -105,7 +105,7 @@ class MenuLinkRepository extends BaseRepository {
 	public function store($input)
 	{
 //dd($input);
-// 		$this->menulink = new MenuLink;
+// 		$this->menulink = new Menulink;
 // 		$this->menulink->create($input);
 
 		$values = [
@@ -114,7 +114,7 @@ class MenuLinkRepository extends BaseRepository {
 			'position'		=> $input['position']
 		];
 
-		$menulink = MenuLink::create($values);
+		$menulink = Menulink::create($values);
 
 		$locales = Cache::get('locales');
 		$original_locale = Session::get('locale');
@@ -155,10 +155,10 @@ class MenuLinkRepository extends BaseRepository {
 	public function update($input, $id)
 	{
 //dd($input);
-// 		$menu = MenuLink::find($id);
+// 		$menu = Menulink::find($id);
 // 		$menu->update($input);
 
-		$menulink = MenuLink::find($id);
+		$menulink = Menulink::find($id);
 
 		$values = [
 			'class'			=> $input['class'],

@@ -47,13 +47,13 @@ class CreateMenulinksTable extends Migration
 			$table->string('title');
 			$table->string('url')->nullable();
 
-			$table->integer('menulink_id')->unsigned()->index();
-			$table->foreign('menulink_id')->references('id')->on('menulinks')->onDelete('cascade');
+			$table->integer('menu_link_id')->unsigned()->index();
+			$table->foreign('menu_link_id')->references('id')->on('menulinks')->onDelete('cascade');
 
 			$table->integer('locale_id')->unsigned()->index();
 			$table->foreign('locale_id')->references('id')->on('locales')->onDelete('cascade');
 
-			$table->unique(['menulink_id', 'locale_id']);
+			$table->unique(['menu_link_id', 'locale_id']);
 
 			$table->softDeletes();
 			$table->timestamps();
