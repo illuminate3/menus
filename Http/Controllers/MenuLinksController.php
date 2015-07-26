@@ -64,17 +64,24 @@ class MenuLinksController extends MenuController {
 	 *
 	 * @return Response
 	 */
-	public function create()
+	public function create($id)
 	{
 		$lang = Session::get('locale');
 
-		$return_id = 1;
+		$return_id = $id;
 
+		$menus = $this->menu->all()->lists('name', 'id');
+
+/*
 		$all_menus = $this->menu->all()->lists('name', 'id');
+$menus = array_add($all_menus, '', trans('kotoba::general.command.select_a') . '&nbsp;' . Lang::choice('kotoba::cms.menu', 1));
+
 		$menu = array('' => trans('kotoba::general.command.select_a') . '&nbsp;' . Lang::choice('kotoba::cms.menu', 1));
 		$menu = new Collection($menu);
+//dd($menu);
 		$menus = $menu->merge($all_menus);
-
+dd($menus);
+*/
 		return Theme::View('menus::menulinks.create',
 			compact(
 				'lang',

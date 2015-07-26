@@ -61,7 +61,7 @@
 
 		<div class="form-group">
 			<label for="title">{{ trans('kotoba::general.title') }}</label>
-			<input type="text" class="form-control" name="{{ 'title_'. $language->id }}" id="{{ 'title_'. $language->id }}" value="{{  $menu->translate($language->locale)->title }}">
+			<input type="text" class="form-control" name="{{ 'title_'. $language->id }}" id="{{ 'title_'. $language->id }}" value="{{  $menu->translate($language->locale)->title }}" autofocus="autofocus">
 		</div>
 
 		<div class="form-group">
@@ -83,12 +83,12 @@
 	</div><!-- tabcontent -->
 
 </div>
-<div class="col-sm-6">
+<div class="col-sm-6 margin-top-xl">
 
 	<div class="form-group">
 	<div class="input-group">
 		<span class="input-group-addon"><i class="fa fa-tag fa-fw"></i></span>
-			<input type="text" id="name" name="name" value="{{ $menu->name }}" placeholder="{{ trans('kotoba::account.name') }}" class="form-control" autofocus="autofocus">
+			<input type="text" id="name" name="name" value="{{ $menu->name }}" placeholder="{{ trans('kotoba::account.name') }}" class="form-control">
 	</div>
 	</div>
 
