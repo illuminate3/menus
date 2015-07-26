@@ -40,6 +40,9 @@ class WidgetServiceProvider extends ServiceProvider {
 		Widget::register('MenuAdmin', 'App\Widgets\MenuAdmin');
 		Widget::register('MenuFooter', 'App\Widgets\MenuFooter');
 
+		Widget::register('MenuFooter', 'App\Widgets\MenuSchools');
+		Widget::register('MenuFooter', 'App\Widgets\MenuDistrict');
+		Widget::register('MenuFooter', 'App\Widgets\AccessPoints');
 	}
 
 
