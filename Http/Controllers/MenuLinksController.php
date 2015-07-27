@@ -34,12 +34,14 @@ class MenuLinksController extends MenuController {
 	protected $menulink;
 
 	public function __construct(
+			Menulink $menulink,
 			MenulinkRepository $menulink_repo,
-			MenuRepository $menu
+			MenuRepository $menu_repo
 		)
 	{
-		$this->menulink_repo= $menulink_repo;
-		$this->menu = $menu;
+		$this->menulink = $menulink;
+		$this->menulink_repo = $menulink_repo;
+		$this->menu_repo = $menu_repo;
 // middleware
 		parent::__construct();
 // middleware
@@ -70,7 +72,7 @@ class MenuLinksController extends MenuController {
 
 		$return_id = $id;
 
-		$menus = $this->menu->all()->lists('name', 'id');
+		$menus = $this->menu_repo->all()->lists('name', 'id');
 
 /*
 		$all_menus = $this->menu->all()->lists('name', 'id');
@@ -140,7 +142,7 @@ dd($menus);
 		$return_id = $id;
 //dd($return_id);
 
-		$menus = $this->menu->all()->lists('name', 'id');
+		$menus = $this->menu_repo->all()->lists('name', 'id');
 // 		$menu = array('' => trans('kotoba::general.command.select_a') . '&nbsp;' . Lang::choice('kotoba::cms.menu', 1));
 // 		$menu = new Collection($menu);
 // 		$menus = $menu->merge($all_menus);
@@ -188,7 +190,7 @@ dd($menus);
 	 */
 	public function destroy($id)
 	{
-		$this->menulink_repo->find($id)->delete();
+		$this->menulink->find($id)->delete();
 
 
 		Flash::success( trans('kotoba::cms.success.menulink_delete') );
