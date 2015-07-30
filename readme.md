@@ -62,6 +62,7 @@ https://github.com/illuminate3/rakkoII
 
 The Following are packages that are specific to this module:
 
+* https://github.com/etrepat/baum
 * https://github.com/vespakoen/menu
 
 
