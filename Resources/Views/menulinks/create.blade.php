@@ -122,7 +122,7 @@
 			Form::select(
 				'menu_id',
 				$menus,
-				$return_id - 1,
+				$return_id,
 				array(
 					'class' => 'form-control chosen-select'
 				)
