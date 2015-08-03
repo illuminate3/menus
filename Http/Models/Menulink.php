@@ -82,5 +82,11 @@ class Menulink extends Model implements TranslatableContract {
 		return $this->url;
 	}
 
+	public function scopeIsEnabled($query)
+	{
+		return $query
+			->where('status', '=', 1);
+	}
+
 
 }
