@@ -7,6 +7,7 @@ use Illuminate\Support\ServiceProvider;
 use Caffeinated\Modules\Facades\Module;
 use Widget;
 
+
 class WidgetServiceProvider extends ServiceProvider {
 
 

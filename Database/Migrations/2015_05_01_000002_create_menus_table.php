@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
+
 class CreateMenusTable extends Migration
 {
 
@@ -11,6 +12,7 @@ class CreateMenusTable extends Migration
 		// Get the prefix
 		$this->prefix = Config::get('general.general_db.prefix', '');
 	}
+
 
 	/**
 	 * Run the migrations.
@@ -54,6 +56,7 @@ class CreateMenusTable extends Migration
 		});
 	}
 
+
 	/**
 	 * Reverse the migrations.
 	 *
@@ -64,6 +67,5 @@ class CreateMenusTable extends Migration
 		Schema::drop($this->prefix . 'menu_translations');
 		Schema::drop($this->prefix . 'menus');
 	}
-
 
 }

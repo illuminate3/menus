@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
+
 class CreateMenulinksTable extends Migration
 {
 
@@ -11,6 +12,7 @@ class CreateMenulinksTable extends Migration
 		// Get the prefix
 		$this->prefix = Config::get('general.general_db.prefix', '');
 	}
+
 
 	/**
 	 * Run the migrations.
@@ -60,6 +62,7 @@ class CreateMenulinksTable extends Migration
 
 		});
 	}
+
 
 	/**
 	 * Reverse the migrations.

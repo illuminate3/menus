@@ -7,6 +7,7 @@ use Laracasts\Presenter\PresentableTrait;
 use Vinkla\Translator\Translatable;
 use Vinkla\Translator\Contracts\Translatable as TranslatableContract;
 
+
 class Menu extends Model implements TranslatableContract {
 
 	use Translatable;
@@ -53,7 +54,13 @@ class Menu extends Model implements TranslatableContract {
 
 
 // Relationships -----------------------------------------------------------
+
+// hasMany
+// BelongsTo
+// BelongsToMany
+
 // Functions ---------------------------------------------------------------
+
 	public function getStatusAttribute()
 	{
 		return $this->status;

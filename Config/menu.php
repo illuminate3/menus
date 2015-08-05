@@ -4,14 +4,12 @@
 // php artisan vendor:publish --provider="App\Modules\Menus\Providers\MenusServiceProvider" --tag="config"
 // php artisan vendor:publish --provider="App\Modules\Menus\Providers\MenusServiceProvider" --tag="views"
 
-
 	return array(
 
   // Global options ------------------------------------------------ /
 
 // rmember cache time
 	'cache_time'=>'3600',
-
 
   // The maximum depth a list can be generated
   // -1 means no limit

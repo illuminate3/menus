@@ -66,7 +66,13 @@ class Menulink extends Model implements TranslatableContract {
 
 
 // Relationships -----------------------------------------------------------
+
+// hasMany
+// BelongsTo
+// BelongsToMany
+
 // Functions ---------------------------------------------------------------
+
 	public function getStatusAttribute()
 	{
 		return $this->status;
