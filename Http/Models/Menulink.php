@@ -68,8 +68,8 @@ class Menulink extends Model implements TranslatableContract {
 // Relationships -----------------------------------------------------------
 
 // hasMany
-// BelongsTo
-// BelongsToMany
+// belongsTo
+// belongsToMany
 
 // Functions ---------------------------------------------------------------
 
