@@ -161,7 +161,7 @@ class MenuRepository extends BaseRepository {
 
 		$menu->update($values);
 
-		$locales = Cache::get('locales');
+		$locales = Cache::get('languages');
 		$original_locale = Session::get('locale');
 
 		foreach($locales as $locale)
