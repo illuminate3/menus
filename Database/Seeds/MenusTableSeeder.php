@@ -17,6 +17,12 @@ class MenusTableSeeder extends Seeder {
 	public function run()
 	{
 
+		$locale_id = DB::table('locales')
+			->where('name', '=', 'English')
+			->where('locale', '=', 'en', 'AND')
+			->pluck('id');
+
+
 		$menu_names = array(
 		[
 			'id'					=> 1,
@@ -34,25 +40,13 @@ class MenusTableSeeder extends Seeder {
 			'status'				=> 1,
 			'title'					=> 'Admin',
 			'menu_id'				=> 1,
-			'locale_id'				=> 63
-		],
-		[
-			'status'				=> 1,
-			'title'					=> 'administración',
-			'menu_id'				=> 1,
-			'locale_id'				=> 68
+			'locale_id'				=> $locale_id
 		],
 		[
 			'status'				=> 1,
 			'title'					=> 'Footer',
 			'menu_id'				=> 2,
-			'locale_id'				=> 63
-		],
-		[
-			'status'				=> 1,
-			'title'					=> 'pie de página',
-			'menu_id'				=> 2,
-			'locale_id'				=> 68
+			'locale_id'				=> $locale_id
 		]
 		);
 
