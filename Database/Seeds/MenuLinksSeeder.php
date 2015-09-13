@@ -7,7 +7,7 @@ Use DB;
 use Schema;
 
 
-class MenuLinksTableSeeder extends Seeder {
+class MenuLinksSeeder extends Seeder {
 
 
 /*
