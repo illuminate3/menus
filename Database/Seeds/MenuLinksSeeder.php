@@ -7,26 +7,25 @@ Use DB;
 use Schema;
 
 
-class MenuLinksSeeder extends Seeder {
+class MenuLinksSeeder extends Seeder
+{
 
-
-/*
-	public function __construct(
-			Menu $menu,
-			MenuTranslation $menu_trans
-		)
-	{
-		$this->menu = $menu;
-		$this->menu_trans = $menu_trans;
-	}
-*/
 
 	public function run()
 	{
 
+		$admin_id = DB::table('menus')
+			->where('name', '=', 'admin')
+			->pluck('id');
+
+		if ($admin_id == null) {
+			$admin_id = 1;
+		}
+
+// Links -------------------------------------------------------------------
 // Menus
 		$link_names = array([
-			'menu_id'				=> 1, // admin menu
+			'menu_id'				=> $admin_id, // admin menu
 			'position'				=> 7
 		]);
 

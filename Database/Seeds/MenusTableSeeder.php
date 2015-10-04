@@ -11,7 +11,8 @@ use Eloquent;
 use Model;
 
 
-class MenusTableSeeder extends Seeder {
+class MenusTableSeeder extends Seeder
+{
 
 
 	public function run()
