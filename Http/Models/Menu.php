@@ -71,5 +71,11 @@ class Menu extends Model implements TranslatableContract {
 		return $this->title;
 	}
 
+	public function scopeIsEnabled($query)
+	{
+		return $query
+			->where('status', '=', 1);
+	}
+
 
 }
