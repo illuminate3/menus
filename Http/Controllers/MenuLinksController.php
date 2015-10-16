@@ -141,7 +141,7 @@ dd($menus);
 		$modal_id = $id;
 		$model = '$menulink';
 
-		$return_id = $id;
+		$return_id = $link->menu_id;
 //dd($return_id);
 
 		$menus = $this->menu_repo->all()->lists('name', 'id');
