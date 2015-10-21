@@ -16,7 +16,7 @@ use Session;
 use Lang;
 
 
-class MenulinkRepository extends BaseRepository {
+class MenuLinkRepository extends BaseRepository {
 
 
 	/**

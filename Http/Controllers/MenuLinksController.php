@@ -5,7 +5,7 @@ namespace App\Modules\Menus\Http\Controllers;
 use App\Modules\Menus\Http\Models\Menu;
 use App\Modules\Menus\Http\Repositories\MenuRepository;
 use App\Modules\Menus\Http\Models\Menulink;
-use App\Modules\Menus\Http\Repositories\MenulinkRepository;
+use App\Modules\Menus\Http\Repositories\MenuLinkRepository;
 
 use Illuminate\Http\Request;
 use App\Modules\Menus\Http\Requests\DeleteRequest;
@@ -36,7 +36,7 @@ class MenuLinksController extends MenuController {
 
 	public function __construct(
 			Menulink $menulink,
-			MenulinkRepository $menulink_repo,
+			MenuLinkRepository $menulink_repo,
 			MenuRepository $menu_repo
 		)
 	{
