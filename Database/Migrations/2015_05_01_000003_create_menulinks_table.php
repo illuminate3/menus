@@ -46,7 +46,7 @@ class CreateMenulinksTable extends Migration
 			$table->engine = 'InnoDB';
 			$table->increments('id')->unsigned();
 
-			$table->boolean('status')->default(0);
+//			$table->boolean('status')->default(0);
 			$table->string('title');
 			$table->string('url')->nullable();
 

@@ -26,6 +26,7 @@ class MenuLinksSeeder extends Seeder
 // Menus
 		$link_names = array([
 			'menu_id'				=> $admin_id, // admin menu
+			'status'				=> 1,
 			'position'				=> 7
 		]);
 
@@ -41,7 +42,6 @@ class MenuLinksSeeder extends Seeder
 			->pluck('id');
 
 		$ink_name_trans = array([
-			'status'				=> 1,
 			'title'					=> 'Menus',
 			'url'					=> '/admin/menus',
 			'menulink_id'			=> $last_insert_id,
