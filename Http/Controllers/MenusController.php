@@ -122,6 +122,7 @@ class MenusController extends MenuController {
 //dd($request);
 
 		$this->menu_repo->update($request->all(), $id);
+		Cache::flush();
 
 		Flash::success( trans('kotoba::cms.success.menu_update') );
 		return redirect('admin/menus');
@@ -138,6 +139,7 @@ class MenusController extends MenuController {
 	{
 //dd($id);
 		Menu::find($id)->delete();
+		Cache::flush();
 
 		Flash::success( trans('kotoba::cms.success.menu_delete') );
 		return redirect('admin/menus');

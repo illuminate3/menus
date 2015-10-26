@@ -194,6 +194,7 @@ dd($menus);
 	public function destroy($id)
 	{
 		$this->menulink->find($id)->delete();
+		Cache::flush();
 
 
 		Flash::success( trans('kotoba::cms.success.menulink_delete') );
