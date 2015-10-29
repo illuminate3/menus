@@ -13,7 +13,7 @@ use App\Modules\Menus\Http\Requests\MenuUpdateRequest;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Input;
 
-//use Datatables;
+use Cache;
 use Flash;
 use Theme;
 
