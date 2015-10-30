@@ -44,6 +44,7 @@ class Menulink extends Model implements TranslatableContract {
 		'icon_class',
 		'link_type',
 		'has_categories',
+		'status_id',
 		// Translatable columns
 		'title',
 		'status',
@@ -91,7 +92,7 @@ class Menulink extends Model implements TranslatableContract {
 	public function scopeIsEnabled($query)
 	{
 		return $query
-			->where('status', '=', 1);
+			->where('status_id', '=', 1);
 	}
 
 

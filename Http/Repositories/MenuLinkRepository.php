@@ -109,12 +109,14 @@ class MenuLinkRepository extends BaseRepository {
 // 		$this->menulink = new Menulink;
 // 		$this->menulink->create($input);
 
+		$menu = Menu::find($input['menu_id']);
+		Cache::forget('widget_' . $menu->name);
+
 		$values = [
 			'class'			=> $input['class'],
 			'menu_id'		=> $input['menu_id'],
 			'position'		=> $input['position']
 		];
-
 		$menulink = Menulink::create($values);
 
 		$locales = Cache::get('languages');
@@ -126,10 +128,10 @@ class MenuLinkRepository extends BaseRepository {
 
 			App::setLocale($properties->locale);
 
-			if ( !isset($input['status_'.$properties->id]) ) {
-				$status = 0;
-			} else {
+			if ( isset($input['status_'.$properties->id]) ) {
 				$status = $input['status_'.$properties->id];
+			} else {
+				$status = 0;
 			}
 
 			$values = [
@@ -137,8 +139,14 @@ class MenuLinkRepository extends BaseRepository {
 				'title'		=> $input['title_'.$properties->id],
 				'url'		=> $input['url_'.$properties->id]
 			];
-
 			$menulink->update($values);
+
+			if ($properties->locale === Config::get('app.fallback_locale') ) {
+				$menu_values = [
+					'status_id'		=> $status
+				];
+				$menulink->update($menu_values);
+			}
 
 		}
 
@@ -157,17 +165,16 @@ class MenuLinkRepository extends BaseRepository {
 	public function update($input, $id)
 	{
 //dd($input);
-// 		$menu = Menulink::find($id);
-// 		$menu->update($input);
+
+		$menu = Menu::find($input['menu_id']);
+		Cache::forget('widget_' . $menu->name);
 
 		$menulink = Menulink::find($id);
-
 		$values = [
 			'class'			=> $input['class'],
 			'menu_id'		=> $input['menu_id'],
 			'position'		=> $input['position']
 		];
-
 		$menulink->update($values);
 
 		$locales = Cache::get('languages');
@@ -178,10 +185,10 @@ class MenuLinkRepository extends BaseRepository {
 
 			App::setLocale($properties->locale);
 
-			if ( !isset($input['status_'.$properties->id]) ) {
-				$status = 0;
-			} else {
+			if ( isset($input['status_'.$properties->id]) ) {
 				$status = $input['status_'.$properties->id];
+			} else {
+				$status = 0;
 			}
 
 			$values = [
@@ -189,8 +196,14 @@ class MenuLinkRepository extends BaseRepository {
 				'title'		=> $input['title_'.$properties->id],
 				'url'		=> $input['url_'.$properties->id]
 			];
-
 			$menulink->update($values);
+
+			if ($properties->locale === Config::get('app.fallback_locale') ) {
+				$menu_values = [
+					'status_id'		=> $status
+				];
+				$menulink->update($menu_values);
+			}
 
 		}
 

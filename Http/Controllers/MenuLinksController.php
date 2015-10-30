@@ -105,7 +105,7 @@ dd($menus);
 	{
 //dd($request);
 		$this->menulink_repo->store($request->all());
-		Cache::flush();
+//		Cache::flush();
 
 		Flash::success( trans('kotoba::cms.success.menulink_create') );
 		return redirect('admin/menulinks/' . $request->menu_id);
@@ -134,6 +134,7 @@ dd($menus);
 	{
 		$link = Menulink::find($id);
 		$lang = Session::get('locale');
+//dd($link);
 
 		$modal_title = trans('kotoba::general.command.delete');
 		$modal_body = trans('kotoba::general.ask.delete');
@@ -178,7 +179,7 @@ dd($menus);
 	{
 //dd($request->menu_id);
 		$this->menulink_repo->update($request->all(), $id);
-		Cache::flush();
+//		Cache::flush();
 
 		Flash::success( trans('kotoba::cms.success.menulink_update') );
 		return redirect('admin/menulinks/' . $request->menu_id);
