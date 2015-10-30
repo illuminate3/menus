@@ -29,7 +29,7 @@ class CreateMenulinksTable extends Migration
 			$table->integer('menu_id')->unsigned();
 			$table->integer('page_id')->unsigned()->nullable();
 			$table->integer('parent_id')->unsigned()->nullable()->default(null);
-			$table->boolean('status')->default(0);
+			$table->boolean('status_id')->default(0);
 			$table->integer('position')->unsigned()->default(1);
 			$table->string('target', 10)->nullable();
 			$table->string('class')->nullable();
