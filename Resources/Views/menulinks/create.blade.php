@@ -83,18 +83,18 @@
 				<div class="checkbox">
 						{{ trans('kotoba::general.enabled') }}
 						&nbsp;
+						<input type="radio" name="{{ 'status_'. $language->id }}"  name="{{ 'status_'. $language->id }}" value="1">
+						&nbsp;
+						{{ trans('kotoba::general.disabled') }}
+						&nbsp;
+						<input type="radio" name="{{ 'status_'. $language->id }}"  name="{{ 'status_'. $language->id }}" value="1">
 {{--
-						<input type="radio" name="{{ 'status_'. $language->id }}"  name="{{ 'status_'. $language->id }}" value="1">
+						<input type="radio" name="status"  name="status" value="1">
 						&nbsp;
 						{{ trans('kotoba::general.disabled') }}
 						&nbsp;
-						<input type="radio" name="{{ 'status_'. $language->id }}"  name="{{ 'status_'. $language->id }}" value="1">
+						<input type="radio" name="status"  name="status" value="1">
 --}}
-						<input type="radio" name="status"  name="status" value="1">
-						&nbsp;
-						{{ trans('kotoba::general.disabled') }}
-						&nbsp;
-						<input type="radio" name="status"  name="status" value="1">
 				</div>
 			</div>
 
