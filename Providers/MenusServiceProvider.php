@@ -79,6 +79,11 @@ class MenusServiceProvider extends ServiceProvider
 			'Menu\Menu'
 		);
 
+		$app = $this->app;
+
+		$app->register('App\Modules\Menus\Providers\WidgetServiceProvider');
+		$app->register('Menu\MenuServiceProvider');
+
 	}
 
 
@@ -92,8 +97,6 @@ class MenusServiceProvider extends ServiceProvider
 		$app = $this->app;
 
 		$app->register('App\Modules\Menus\Providers\RouteServiceProvider');
-		$app->register('App\Modules\Menus\Providers\WidgetServiceProvider');
-		$app->register('Menu\MenuServiceProvider');
 	}
 
 
