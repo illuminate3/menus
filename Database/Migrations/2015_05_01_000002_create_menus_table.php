@@ -40,6 +40,7 @@ class CreateMenusTable extends Migration
 			$table->engine = 'InnoDB';
 			$table->increments('id')->unsigned();
 
+//			$table->boolean('status_id')->default(0);
 			$table->boolean('status')->default(0);
 			$table->string('title');
 

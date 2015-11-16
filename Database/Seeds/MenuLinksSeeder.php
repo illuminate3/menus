@@ -26,7 +26,7 @@ class MenuLinksSeeder extends Seeder
 // Menus
 		$link_names = array([
 			'menu_id'				=> $admin_id, // admin menu
-			'status'				=> 1,
+			'status_id'				=> 1,
 			'position'				=> 7
 		]);
 
@@ -43,6 +43,7 @@ class MenuLinksSeeder extends Seeder
 
 		$ink_name_trans = array([
 			'title'					=> 'Menus',
+			'status'				=> 1,
 			'url'					=> '/admin/menus',
 			'menulink_id'			=> $last_insert_id,
 			'locale_id'				=> $locale_id // English ID

@@ -27,11 +27,13 @@ class MenusTableSeeder extends Seeder
 		$menu_names = array(
 		[
 			'id'					=> 1,
+			'status'				=> 1,
 			'name'					=> 'admin',
 			'class'					=> 'nav-menu'
 		],
 		[
 			'id'					=> 2,
+			'status'				=> 1,
 			'name'					=> 'footer',
 			'class'					=> 'nav-menu'
 		]
