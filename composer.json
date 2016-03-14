@@ -4,6 +4,7 @@
 	"keywords": ["Menus", "CMS", "Rakko"],
 	"require": {
 		"laravel/framework": "5.1.*",
+		"caffeinated/menus": "~2.0",
 		"vespakoen/menu": "3.*"
 	},
 	"config": {

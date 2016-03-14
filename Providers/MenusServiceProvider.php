@@ -11,6 +11,8 @@ use Lang;
 use Theme;
 use View;
 
+use Plugin;
+
 
 class MenusServiceProvider extends ServiceProvider
 {
@@ -29,6 +31,7 @@ class MenusServiceProvider extends ServiceProvider
 
 		$this->registerNamespaces();
 		$this->registerProviders();
+
 	}
 
 
@@ -78,11 +81,14 @@ class MenusServiceProvider extends ServiceProvider
 			'Menu',
 			'Menu\Menu'
 		);
+		AliasLoader::getInstance()->alias(
+			'CMenu',
+			'Caffeinated\Menus\Facades\Menu'
+		);
 
-		$app = $this->app;
-
-		$app->register('App\Modules\Menus\Providers\WidgetServiceProvider');
-		$app->register('Menu\MenuServiceProvider');
+// Register Middleware
+$kernel = $this->app->make('Illuminate\Contracts\Http\Kernel');
+$kernel->pushMiddleware('App\Modules\Menus\Http\Middleware\MenuMiddleware');
 
 	}
 
@@ -97,6 +103,10 @@ class MenusServiceProvider extends ServiceProvider
 		$app = $this->app;
 
 		$app->register('App\Modules\Menus\Providers\RouteServiceProvider');
+
+		$app->register('App\Modules\Menus\Providers\WidgetServiceProvider');
+		$app->register('Menu\MenuServiceProvider');
+		$app->register('Caffeinated\Menus\MenusServiceProvider');
 	}
 
 

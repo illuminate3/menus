@@ -4,9 +4,9 @@ namespace App\Modules\Menus\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
-use Caffeinated\Modules\Facades\Module;
+//use Caffeinated\Modules\Facades\Module;
 use Widget;
-
+use Plugin;
 
 class WidgetServiceProvider extends ServiceProvider {
 
@@ -34,12 +34,14 @@ class WidgetServiceProvider extends ServiceProvider {
 	public function register()
 	{
 
+
 // ALL
 //		Widget::register('App\\Widgets');
 
 // Individually
 		Widget::register('MenuAdmin', 'App\Widgets\MenuAdmin');
 		Widget::register('MenuFooter', 'App\Widgets\MenuFooter');
+//		Plugin::register('plugin_navigation', 'App\Modules\Menus\Http\Plugins\MenuNavigation');
 
 	}
 
