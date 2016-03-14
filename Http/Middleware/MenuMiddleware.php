@@ -37,7 +37,7 @@ class MenuMiddleware
 			$pages = Cache::get('menu_navlinks', null);
 
 			if ($pages == null) {
-dd('menu_navlinks');
+//dd('menu_navlinks');
 				$pages = Cache::rememberForever('menu_navlinks', function() {
 					$timed_pages = Content::InPrint()->SiteID()->IsNavigation()->IsTimed()->orderBy('order')->get();
 					$normal_pages = Content::InPrint()->SiteID()->IsNavigation()->NotTimed()->orderBy('order')->get();
