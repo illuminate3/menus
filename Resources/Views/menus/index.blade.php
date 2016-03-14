@@ -19,6 +19,7 @@
 $(document).ready(function() {
 oTable =
 	$('#table').DataTable({
+		'pageLength': 25,
 	});
 });
 @stop
