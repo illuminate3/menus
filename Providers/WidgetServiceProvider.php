@@ -39,7 +39,7 @@ class WidgetServiceProvider extends ServiceProvider {
 //		Widget::register('App\\Widgets');
 
 // Individually
-		Widget::register('MenuAdmin', 'App\Widgets\MenuAdmin');
+//		Widget::register('MenuAdmin', 'App\Widgets\MenuAdmin');
 		Widget::register('MenuFooter', 'App\Widgets\MenuFooter');
 //		Plugin::register('plugin_navigation', 'App\Modules\Menus\Http\Plugins\MenuNavigation');
 
