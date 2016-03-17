@@ -77,6 +77,7 @@ class MenusController extends MenuController {
 //dd($request);
 
 		$this->menu_repo->store($request->all());
+		Cache::flush();
 
 		Flash::success( trans('kotoba::cms.success.menu_create') );
 		return redirect('admin/menus');

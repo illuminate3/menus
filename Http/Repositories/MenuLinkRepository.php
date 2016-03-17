@@ -110,7 +110,7 @@ class MenuLinkRepository extends BaseRepository {
 // 		$this->menulink->create($input);
 
 		$menu = Menu::find($input['menu_id']);
-		Cache::forget('widget_' . $menu->name);
+//		Cache::forget('widget_' . $menu->name);
 
 		$values = [
 			'class'			=> $input['class'],
@@ -167,7 +167,7 @@ class MenuLinkRepository extends BaseRepository {
 //dd($input);
 
 		$menu = Menu::find($input['menu_id']);
-		Cache::forget('widget_' . $menu->name);
+//		Cache::forget('widget_' . $menu->name);
 
 		$menulink = Menulink::find($id);
 		$values = [
