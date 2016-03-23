@@ -87,8 +87,8 @@ class MenusServiceProvider extends ServiceProvider
 		);
 
 // Register Middleware
-		$kernel = $this->app->make('Illuminate\Contracts\Http\Kernel');
-		$kernel->pushMiddleware('App\Modules\Menus\Http\Middleware\MenuMiddleware');
+// 		$kernel = $this->app->make('Illuminate\Contracts\Http\Kernel');
+// 		$kernel->pushMiddleware('App\Modules\Menus\Http\Middleware\MenuMiddleware');
 
 	}
 
