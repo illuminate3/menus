@@ -8,6 +8,7 @@ use Illuminate\Support\ServiceProvider;
 use App;
 use Config;
 use Lang;
+use Module;
 use Theme;
 use View;
 
@@ -87,8 +88,10 @@ class MenusServiceProvider extends ServiceProvider
 		);
 
 // Register Middleware
-		$kernel = $this->app->make('Illuminate\Contracts\Http\Kernel');
-		$kernel->pushMiddleware('App\Modules\Menus\Http\Middleware\MenuMiddleware');
+		if ( Module::exists('kenshu') ) {
+			$kernel = $this->app->make('Illuminate\Contracts\Http\Kernel');
+			$kernel->pushMiddleware('App\Modules\Menus\Http\Middleware\MenuMiddleware');
+		}
 
 	}
 
