@@ -79,10 +79,6 @@ class MenusServiceProvider extends ServiceProvider
 
 
 		AliasLoader::getInstance()->alias(
-			'Menu',
-			'Menu\Menu'
-		);
-		AliasLoader::getInstance()->alias(
 			'CMenu',
 			'Caffeinated\Menus\Facades\Menu'
 		);
@@ -109,7 +105,6 @@ class MenusServiceProvider extends ServiceProvider
 //		$app->register('App\Modules\Menus\Providers\MenuEventServiceProvider');
 
 		$app->register('App\Modules\Menus\Providers\WidgetServiceProvider');
-		$app->register('Menu\MenuServiceProvider');
 		$app->register('Caffeinated\Menus\MenusServiceProvider');
 	}
 
