@@ -8,12 +8,7 @@ use Caffeinated\Menus\Builder;
 
 use App\Modules\Himawari\Http\Models\Content as Content;
 
-use App;
 use Cache;
-//use Config;
-//use Menu;
-use Session;
-//use Theme;
 
 
 class MenuMiddleware
@@ -30,11 +25,13 @@ class MenuMiddleware
 	public function handle($request, Closure $next)
 	{
 
-
 		CMenu::make('navLinks', function(Builder $menu) {
 //			$activeTheme = Theme::getActive();
 //Cache::forget('menu_navlinks');
+
 			$pages = Cache::get('menu_navlinks', null);
+//dd(count($pages));
+// /dd(Cache::get('menu_navlinks'));
 
 			if ($pages == null) {
 //dd('menu_navlinks');
@@ -50,12 +47,7 @@ class MenuMiddleware
 			{
 				$menu->add($page->title, ['url' => $page->slug, 'class' => 'nav-link']);
 			}
-
-// 			$menu->add('Home', '/');
-// 			$menu->add('About', '/about');
-// 			$menu->add('Blog', '/blog');
-// 			$menu->add('Contact Me', '/contact-me');
-		});
+			});
 
 		return $next($request);
 	}

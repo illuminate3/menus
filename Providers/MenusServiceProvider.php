@@ -84,10 +84,10 @@ class MenusServiceProvider extends ServiceProvider
 		);
 
 // Register Middleware
-		if ( Module::exists('kenshu') ) {
-			$kernel = $this->app->make('Illuminate\Contracts\Http\Kernel');
-			$kernel->pushMiddleware('App\Modules\Menus\Http\Middleware\MenuMiddleware');
-		}
+// 		if ( Module::exists('kenshu') ) {
+// 			$kernel = $this->app->make('Illuminate\Contracts\Http\Kernel');
+// 			$kernel->pushMiddleware('App\Modules\Menus\Http\Middleware\MenuMiddleware');
+// 		}
 
 	}
 
