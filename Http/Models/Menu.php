@@ -34,6 +34,7 @@ class Menu extends Model implements TranslatableContract {
 // Fillable ----------------------------------------------------------------
 	protected $fillable = [
 		'class',
+		'enable',
 		'name',
 		// Translatable columns
 		'status',

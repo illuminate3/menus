@@ -104,6 +104,7 @@ class MenusController extends MenuController {
 	 */
 	public function edit($id)
 	{
+//dd($this->menu_repo->edit($id));
 		return Theme::View('menus::menus.edit',
 			$this->menu_repo->edit($id));
 	}

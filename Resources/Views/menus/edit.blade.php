@@ -69,11 +69,11 @@
 			<div class="checkbox">
 					{{ trans('kotoba::general.enabled') }}
 					&nbsp;
-					<input type="radio" name="{{ 'status_'. $language->id }}"  name="{{ 'status_'. $language->id }}" value="1" @if($menu->translate($language->locale)->status===1) checked @endif>
+					<input type="radio" name="{{ 'status_'. $language->id }}" id="{{ 'status_'. $language->id }}" value="1" @if($menu->translate($language->locale)->status===1) checked @endif>
 					&nbsp;
 					{{ trans('kotoba::general.disabled') }}
 					&nbsp;
-					<input type="radio" name="{{ 'status_'. $language->id }}"  name="{{ 'status_'. $language->id }}" value="0" @if($menu->translate($language->locale)->status===0) checked @endif>
+					<input type="radio" name="{{ 'status_'. $language->id }}" id="{{ 'status_'. $language->id }}" value="0" @if($menu->translate($language->locale)->status===0) checked @endif>
 			</div>
 		</div>
 
@@ -100,6 +100,19 @@
 			<input type="text" id="class" name="class" value="{{ $menu->class }}" placeholder="{{ trans('kotoba::general.class') }}" class="form-control">
 	</div>
 	</div>
+
+	<div class="form-group">
+		<div class="checkbox">
+				{{ trans('kotoba::general.enabled') }}
+				&nbsp;
+				<input type="radio" name="enable" id="enable" value="1" @if($menu->enable === 1) checked @endif>
+				&nbsp;
+				{{ trans('kotoba::general.disabled') }}
+				&nbsp;
+				<input type="radio" name="enable" id="enable" value="0" @if($menu->enable === 0) checked @endif>
+		</div>
+	</div>
+
 
 </div>
 

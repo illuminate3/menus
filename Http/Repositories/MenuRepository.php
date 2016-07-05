@@ -75,7 +75,7 @@ class MenuRepository extends BaseRepository {
 	{
 		$menu = $this->model->find($id);
 		$lang = Session::get('locale');
-//dd($menu);
+//dd($menu->enable);
 
 		$modal_title = trans('kotoba::general.command.delete');
 		$modal_body = trans('kotoba::general.ask.delete');
@@ -155,6 +155,7 @@ class MenuRepository extends BaseRepository {
 		$menu = Menu::find($id);
 
 		$values = [
+			'enable'		=> $input['enable'],
 			'name'			=> $input['name'],
 			'class'			=> $input['class']
 		];
