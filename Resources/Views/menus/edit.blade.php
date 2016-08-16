@@ -65,6 +65,7 @@
 			<input type="text" class="form-control" name="{{ 'title_'. $language->id }}" id="{{ 'title_'. $language->id }}" value="{{  $menu->translate($language->locale)->title }}" autofocus="autofocus">
 		</div>
 
+{{--
 		<div class="form-group">
 			<div class="checkbox">
 					{{ trans('kotoba::general.enabled') }}
@@ -76,6 +77,7 @@
 					<input type="radio" name="{{ 'status_'. $language->id }}" id="{{ 'status_'. $language->id }}" value="0" @if($menu->translate($language->locale)->status===0) checked @endif>
 			</div>
 		</div>
+--}}
 
 	</div><!-- ./ $lang panel -->
 	@endforeach
@@ -105,11 +107,11 @@
 		<div class="checkbox">
 				{{ trans('kotoba::general.enabled') }}
 				&nbsp;
-				<input type="radio" name="enable" id="enable" value="1" @if($menu->enable === 1) checked @endif>
+				<input type="radio" name="status" id="status" value="1" @if($menu->status === 1) checked @endif>
 				&nbsp;
 				{{ trans('kotoba::general.disabled') }}
 				&nbsp;
-				<input type="radio" name="enable" id="enable" value="0" @if($menu->enable === 0) checked @endif>
+				<input type="radio" name="status" id="status" value="0" @if($menu->status === 0) checked @endif>
 		</div>
 	</div>
 

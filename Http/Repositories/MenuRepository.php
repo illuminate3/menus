@@ -155,7 +155,7 @@ class MenuRepository extends BaseRepository {
 		$menu = Menu::find($id);
 
 		$values = [
-			'enable'		=> $input['enable'],
+			'status'		=> $input['status'],
 			'name'			=> $input['name'],
 			'class'			=> $input['class']
 		];
@@ -170,7 +170,7 @@ class MenuRepository extends BaseRepository {
 			App::setLocale($locale->locale);
 
 			$values = [
-				'status'	=> $input['status_' . $locale->id],
+//				'status'	=> $input['status_' . $locale->id],
 				'title'		=> $input['title_' . $locale->id]
 			];
 

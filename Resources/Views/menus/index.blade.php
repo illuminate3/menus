@@ -51,15 +51,15 @@ oTable =
 	<thead>
 		<tr>
 			<th>{{ trans('kotoba::table.name') }}</th>
-			<th>{{ trans('kotoba::table.title') }}</th>
+			<th>{{ trans('kotoba::table.slug') }}</th>
 			<th>{{ Lang::choice('kotoba::table.action', 2) }}</th>
 		</tr>
 	</thead>
 	<tbody>
 		@foreach ($menus as $menu)
 			<tr>
-				<td>{{ $menu->name }}</td>
 				<td>{{ $menu->title }}</td>
+				<td>{{ $menu->name }}</td>
 				<td>
 					<a href="/admin/menus/{{ $menu->id }}/edit" class="btn btn-success" title="{{ trans('kotoba::button.edit') }}">
 						<i class="fa fa-pencil fa-fw"></i>
